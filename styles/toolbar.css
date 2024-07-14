@@ -1,0 +1,8 @@
+.scrollable-dropdown {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.no-outline:focus {
+  box-shadow: none;
+}
