@@ -1,13 +1,11 @@
-"use client";
-
 import { Editor } from "@tiptap/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "../ui/dropdown-menu";
-import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { Button } from "../ui/button";
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 interface FontSizeButtonProps {

@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect } from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
 import EditorToolbar from "@/components/editor-toolbar";
@@ -19,6 +17,7 @@ const Editor = () => {
     onCreate: ({ editor }) => {
       editor.commands.setFontFamily("inter");
     },
+    immediatelyRender: false,
     extensions: [
       ext.Blockquote,
       ext.BulletList,
@@ -40,12 +39,14 @@ const Editor = () => {
       ext.TextStyle,
       ext.Color,
       ext.Underline,
-      ext.Highlight,
       ext.Link,
       ext.FontFamilyPlugin,
       ext.FontSizePlugin,
       ext.StrikePlugin,
       ext.LineHeightPlugin,
+      ext.Highlight.configure({
+        multicolor: true,
+      }),
       ext.TaskList.configure({
         HTMLAttributes: {
           style: "task-list",

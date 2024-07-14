@@ -1,7 +1,5 @@
 import { Editor } from "@tiptap/react";
 import { Image } from "lucide-react";
-import { useState } from "react";
-import { ColorResult } from "react-color";
 import {
   Popover,
   PopoverContent,
