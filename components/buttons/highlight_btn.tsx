@@ -8,17 +8,45 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
+import ColorPicker from "../color_picker";
 
 interface HighlightButtonProps {
   editor: Editor;
 }
 
+const stableColorList = [
+  "#d9e3f0",
+  "#f47373",
+  "#697689",
+  "#37d67a",
+  "#2ccce4",
+  "#555555",
+  "#dce775",
+  "#ff8a65",
+  "#ba68c8",
+];
+
+const MAX_COLORS = 14;
+
 const HighlightButton = ({ editor }: HighlightButtonProps) => {
   const [color, setColor] = useState("#000000");
+  const [colorList, setList] = useState<string[]>(stableColorList);
+  const [customColors, setCustomColors] = useState<string[]>([]);
 
   const applyColor = (selectedColor: ColorResult) => {
     setColor(selectedColor.hex);
     editor.chain().focus().setHighlight({ color: selectedColor.hex }).run();
+
+    let tempCustomColors: string[] = customColors;
+    if (!colorList.includes(selectedColor.hex)) {
+      if (colorList.length === MAX_COLORS) {
+        tempCustomColors.shift();
+      }
+      tempCustomColors.push(selectedColor.hex);
+      setCustomColors(tempCustomColors);
+
+      setList(stableColorList.concat(customColors));
+    }
   };
 
   const handleNoneClick = () => {
@@ -34,17 +62,12 @@ const HighlightButton = ({ editor }: HighlightButtonProps) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="color-picker-container">
-        <TwitterPicker
+        <ColorPicker
           color={color}
+          colors={colorList}
           onChangeComplete={applyColor}
-          className="color-picker"
+          handleNoneClick={handleNoneClick}
         />
-        <div className="color-none-btn hover:bg-accent hover:text-accent-foreground">
-          <button onClick={handleNoneClick}>
-            <Droplet className="droplet-icon" />
-            None
-          </button>
-        </div>
       </PopoverContent>
     </Popover>
   );
