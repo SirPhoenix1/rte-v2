@@ -48,3 +48,12 @@
   margin-bottom: 3px;
   display: inline;
 }
+
+.drop-horizontal-menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.more-item {
+  flex: 1 1 auto;
+}

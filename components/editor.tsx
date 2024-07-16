@@ -39,11 +39,15 @@ const Editor = () => {
       ext.TextStyle,
       ext.Color,
       ext.Underline,
-      ext.Link,
       ext.FontFamilyPlugin,
       ext.FontSizePlugin,
       ext.StrikePlugin,
       ext.LineHeightPlugin,
+      ext.Link.configure({
+        HTMLAttributes: {
+          class: "hyperlink",
+        },
+      }),
       ext.Highlight.configure({
         multicolor: true,
       }),
@@ -73,7 +77,7 @@ const Editor = () => {
   return (
     <>
       {editor && (
-        <div>
+        <div className="editor-container">
           <EditorToolbar editor={editor} />
           <EditorContent editor={editor} />
         </div>

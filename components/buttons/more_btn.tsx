@@ -9,24 +9,29 @@ import { MoreHorizontal } from "lucide-react";
 import React from "react";
 
 interface MoreButtonProps {
-  children: React.ReactNode;
+  buttons: React.ReactNode[];
 }
-const MoreButton = ({ children }: MoreButtonProps) => {
+
+const MoreButton = ({ buttons }: MoreButtonProps) => {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button className="p-2" variant="ghost">
-          <MoreHorizontal />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        {React.Children.map(children, (child, index) => (
-          <>
-            {child && <DropdownMenuItem key={index}>{child}</DropdownMenuItem>}
-          </>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <>
+      {buttons.length > 0 && (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button className="p-2 no-outline" variant="ghost">
+              <MoreHorizontal />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="drop-horizontal-menu">
+            {React.Children.map(buttons, (btn, index) => (
+              <DropdownMenuItem key={index} className="more-item">
+                {btn}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
+    </>
   );
 };
 

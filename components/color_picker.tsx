@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ColorResult, PhotoshopPicker, TwitterPicker } from "react-color";
 import {
   Popover,
@@ -16,9 +16,6 @@ interface ColorPickerProps {
   handleNoneClick?: () => void;
 }
 
-const blackHSL = { h: 0, l: 0, s: 0 };
-const blackRGB = { b: 0, g: 0, r: 0 };
-
 const ColorPicker = ({
   color,
   colors = [],
@@ -27,6 +24,15 @@ const ColorPicker = ({
 }: ColorPickerProps) => {
   const [customOpen, setCustomOpen] = useState(false);
   const [customColor, setCustomColor] = useState<ColorResult>();
+
+  useEffect(() => {
+    const colorSwatch = document.querySelector(
+      `div[title="${color}"]`
+    ) as HTMLElement;
+    if (colorSwatch) {
+      colorSwatch.focus();
+    }
+  }, [color]);
 
   const toggleCustomOpen = () => {
     setCustomOpen(!customOpen);
@@ -78,4 +84,4 @@ const ColorPicker = ({
   );
 };
 
-export default ColorPicker;
+export default React.memo(ColorPicker);

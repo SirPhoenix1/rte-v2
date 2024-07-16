@@ -1,3 +1,4 @@
 1. ColorButton: Text Color picker
 2. HighlightButton: Highlight Color picker
 3. Fix padding left in toolbar
+4. use useCallback for color picker!

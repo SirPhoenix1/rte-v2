@@ -133,3 +133,8 @@
 .task-list li > div p {
   display: inline;
 }
+
+.hyperlink {
+  color: var(--hyperlink-blue);
+  text-decoration: underline;
+}

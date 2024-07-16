@@ -54,25 +54,15 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
     return () => window.removeEventListener("resize", updateButtonVisibility);
   }, []);
 
+  const btnMap = buttonComponents.reduce((map, btn) => {
+    map[btn.key as string] = btn;
+    return map;
+  }, {} as Record<string, React.ReactElement>);
+
   return (
-    <div className="relative border border-input bg-transparent rounded-md rounded-br-none rounded-bl-none p-1 flex flex-row items-center gap-1 overflow-hidden toolbar">
-      {visibleButtons.map((key) => (
-        <div key={key} className="inline-block">
-          {buttonComponents.find((button) => button.key === key)}
-        </div>
-      ))}
-      {/* More */}
-      {dropdownButtons.length > 0 && (
-        <div className="inline-block relative">
-          <Buttons.MoreButton>
-            {dropdownButtons.map((key) => (
-              <div key={key} className="inline-block">
-                {buttonComponents.find((button) => button.key === key)}
-              </div>
-            ))}
-          </Buttons.MoreButton>
-        </div>
-      )}
+    <div className="relative border border-input bg-transparent rounded-md rounded-br-none rounded-bl-none p-1 flex flex-row items-center gap-1 overflow-hidden">
+      {visibleButtons.map((key) => btnMap[key])}
+      <Buttons.MoreButton buttons={dropdownButtons.map((key) => btnMap[key])} />
     </div>
   );
 };

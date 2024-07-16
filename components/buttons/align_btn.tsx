@@ -31,7 +31,7 @@ const AlignButton = ({ editor }: AlignButtonProps) => {
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="drop-horizontal-menu">
         <DropdownMenuItem
           onClick={() => editor.chain().focus().setTextAlign("left").run()}
           className={

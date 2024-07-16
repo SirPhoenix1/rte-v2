@@ -8,25 +8,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import ColorPicker from "../color_picker";
+import ColorPicker from "@/components/color_picker";
+import { stableColorList, MAX_COLORS } from "@/components/coloring";
 
 interface HighlightButtonProps {
   editor: Editor;
 }
-
-const stableColorList = [
-  "#d9e3f0",
-  "#f47373",
-  "#697689",
-  "#37d67a",
-  "#2ccce4",
-  "#555555",
-  "#dce775",
-  "#ff8a65",
-  "#ba68c8",
-];
-
-const MAX_COLORS = 14;
 
 const HighlightButton = ({ editor }: HighlightButtonProps) => {
   const [color, setColor] = useState("#000000");
