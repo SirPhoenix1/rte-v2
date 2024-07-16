@@ -60,7 +60,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   }, {} as Record<string, React.ReactElement>);
 
   return (
-    <div className="relative border border-input bg-transparent rounded-md rounded-br-none rounded-bl-none p-1 flex flex-row items-center gap-1 overflow-hidden">
+    <div className="relative border border-input bg-transparent rounded-md rounded-br-none rounded-bl-none p-1 flex flex-row items-center gap-1 overflow-hidden justify-center">
       {visibleButtons.map((key) => btnMap[key])}
       <Buttons.MoreButton buttons={dropdownButtons.map((key) => btnMap[key])} />
     </div>
