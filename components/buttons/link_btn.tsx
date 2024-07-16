@@ -63,9 +63,22 @@ const LinkButton = ({ editor }: LinkButtonProps) => {
             placeholder="https://example.com"
             value={url}
             onChange={handleChange}
+            className="no-outline my-3"
           />
-          <Button onClick={handleSubmit}>Enter</Button>
-          <Button onClick={handleCancel}>Remove</Button>
+          <div className="flex justify-between">
+            <Button
+              onClick={handleSubmit}
+              className="text-sm px-2 py-1 h-8 w-20"
+            >
+              Enter
+            </Button>
+            <Button
+              onClick={handleCancel}
+              className="text-sm px-2 py-1 h-8 w-20"
+            >
+              Remove
+            </Button>
+          </div>
         </div>
       </PopoverContent>
     </Popover>
