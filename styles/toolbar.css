@@ -57,3 +57,10 @@
 .more-item {
   flex: 1 1 auto;
 }
+
+.font-family-btn {
+  display: inline-block;
+  width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,5 +1,6 @@
 1. image btn - do
 2. line height btn - fix
-3. task list btn - make inline
-4. ordered list - fix
-5. dropdown and popover in more dropdown broken - check all btns in more menu.
+3. dropdown and popover in more dropdown broken - check all btns in more menu.
+4. task list btn - make inline
+5. bullet list - fix
+6. ordered list - fix

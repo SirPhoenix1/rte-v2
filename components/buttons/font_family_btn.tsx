@@ -21,7 +21,10 @@ const FontFamilyButton = ({ editor }: FontFamilyButtonProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className={`p-2 no-outline ${fontValue}`} variant="ghost">
+        <Button
+          className={`p-2 no-outline ${fontValue} font-family-btn`}
+          variant="ghost"
+        >
           {fontName}
         </Button>
       </DropdownMenuTrigger>
