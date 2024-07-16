@@ -1,2 +1,5 @@
-3. Fix padding left in toolbar
-4. use useCallback for color picker!
+1. image btn - do
+2. line height btn - fix
+3. task list btn - make inline
+4. ordered list - fix
+5. dropdown and popover in more dropdown broken - check all btns in more menu.
