@@ -67,16 +67,16 @@ const LinkButton = ({ editor }: LinkButtonProps) => {
           />
           <div className="flex justify-between">
             <Button
-              onClick={handleSubmit}
-              className="text-sm px-2 py-1 h-8 w-20"
-            >
-              Enter
-            </Button>
-            <Button
               onClick={handleCancel}
               className="text-sm px-2 py-1 h-8 w-20"
             >
               Remove
+            </Button>
+            <Button
+              onClick={handleSubmit}
+              className="text-sm px-2 py-1 h-8 w-20"
+            >
+              Enter
             </Button>
           </div>
         </div>

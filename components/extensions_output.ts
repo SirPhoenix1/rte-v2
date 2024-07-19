@@ -25,6 +25,7 @@ import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
+import ImageResize from "tiptap-extension-resize-image"
 import StrikePlugin from "@/components/plugins/strike_plugin";
 import FontFamilyPlugin from "@/components/plugins/font_family_plugin";
 import LineHeightPlugin from "@/components/plugins/line_height_plugin";
@@ -47,6 +48,7 @@ export {
   Text,
   Bold,
   Code,
+  ImageResize,
   Italic,
   Dropcursor,
   Gapcursor,

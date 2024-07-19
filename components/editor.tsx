@@ -32,6 +32,7 @@ const Editor = () => {
       ext.Text,
       ext.Bold,
       ext.Code,
+      ext.ImageResize,
       ext.Italic,
       ext.Dropcursor,
       ext.Gapcursor,
@@ -66,6 +67,9 @@ const Editor = () => {
         types: ["heading", "paragraph"],
         alignments: ["left", "right", "center", "justify"],
         defaultAlignment: "left",
+      }),
+      ext.Image.configure({
+        inline: true,
       }),
     ],
   });

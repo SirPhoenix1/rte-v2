@@ -18,6 +18,10 @@ const FontFamilyButton = ({ editor }: FontFamilyButtonProps) => {
   const [fontName, setFontName] = useState(fontList[0].name);
   const [fontValue, setFontValue] = useState(fontList[0].value);
 
+  const handleCloseAutoFocus = (event: Event) => {
+    event.preventDefault();
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -28,7 +32,7 @@ const FontFamilyButton = ({ editor }: FontFamilyButtonProps) => {
           {fontName}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="scrollable-dropdown">
+      <DropdownMenuContent className="scrollable-dropdown" onCloseAutoFocus={handleCloseAutoFocus}>
         {fontList.map((font) => (
           <DropdownMenuItem
             key={font.name}

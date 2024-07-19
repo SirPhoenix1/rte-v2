@@ -60,7 +60,7 @@
 
 .font-family-btn {
   display: inline-block;
-  width: 10rem;
+  width: 65px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
