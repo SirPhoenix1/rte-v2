@@ -64,10 +64,3 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-.task-item label {
-  margin-right: 10px;
-}
-.task-item p, .task-item div {
-  display: inline-block;
-}

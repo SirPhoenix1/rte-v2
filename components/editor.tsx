@@ -20,8 +20,6 @@ const Editor = () => {
     immediatelyRender: false,
     extensions: [
       ext.Blockquote,
-      ext.BulletList,
-      ext.OrderedList,
       ext.ListItem,
       ext.CodeBlock,
       ext.HardBreak,
@@ -40,11 +38,25 @@ const Editor = () => {
       ext.TextStyle,
       ext.Color,
       ext.Underline,
-      ext.TaskList,
       ext.FontFamilyPlugin,
       ext.FontSizePlugin,
       ext.StrikePlugin,
       ext.LineHeightPlugin,
+      ext.TaskList.configure({
+        HTMLAttributes: {
+          class: "task-list"
+        }
+      }),
+      ext.BulletList.configure({
+        HTMLAttributes: {
+          class: "bullet-list"
+        }
+      }),
+      ext.OrderedList.configure({
+        HTMLAttributes: {
+          class: "ordered-list"
+        }
+      }),
       ext.Link.configure({
         HTMLAttributes: {
           class: "hyperlink",
@@ -55,9 +67,6 @@ const Editor = () => {
       }),
       ext.TaskItem.configure({
         nested: true,
-        HTMLAttributes: {
-          class: "task-item"
-        }
       }),
       ext.Placeholder.configure({
         placeholder: "Write here...",
