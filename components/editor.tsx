@@ -40,6 +40,7 @@ const Editor = () => {
       ext.TextStyle,
       ext.Color,
       ext.Underline,
+      ext.TaskList,
       ext.FontFamilyPlugin,
       ext.FontSizePlugin,
       ext.StrikePlugin,
@@ -52,13 +53,11 @@ const Editor = () => {
       ext.Highlight.configure({
         multicolor: true,
       }),
-      ext.TaskList.configure({
-        HTMLAttributes: {
-          style: "task-list",
-        },
-      }),
       ext.TaskItem.configure({
         nested: true,
+        HTMLAttributes: {
+          class: "task-item"
+        }
       }),
       ext.Placeholder.configure({
         placeholder: "Write here...",
