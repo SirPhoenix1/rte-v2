@@ -16,7 +16,7 @@ const AlignButton = ({ editor }: AlignButtonProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="p-2" variant="ghost">
+        <Button className="p-2 no-outline" variant="ghost">
           {editor.isActive({ textAlign: "left" }) && (
             <AlignLeft className="h-4 w-4" />
           )}
