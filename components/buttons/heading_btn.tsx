@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import { Heading } from "lucide-react";
 import {
   DropdownMenu,
@@ -13,14 +13,24 @@ interface HeadingButtonProps {
 }
 
 const HeadingButton = ({ editor }: HeadingButtonProps) => {
+  const handleCloseAutoFocus = (event: Event) => {
+    event.preventDefault();
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="p-2" variant="ghost">
+        <Button
+          className="p-2"
+          variant="ghost"
+          data-tooltip-id="headingTooltip"
+          data-tooltip-content="Heading (Ctrl+Alt+[1-6])"
+          data-tooltip-place="bottom"
+        >
           <Heading className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent onCloseAutoFocus={handleCloseAutoFocus}>
         <DropdownMenuItem
           onClick={() => editor.chain().focus().setParagraph().run()}
         >

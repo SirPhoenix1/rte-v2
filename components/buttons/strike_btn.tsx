@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import { Toggle } from "@/components/ui/toggle";
 import { Strikethrough } from "lucide-react";
 
@@ -13,6 +13,9 @@ const StrikeButton = ({ editor }: StrikeButtonProps) => {
       pressed={editor.isActive("strike")}
       onPressedChange={() => editor.chain().focus().toggleStrike().run()}
       className={editor.isActive("strike") ? "is-active" : ""}
+      data-tooltip-id="strikeTooltip"
+      data-tooltip-content="Strike (Ctrl+Shift+S)"
+      data-tooltip-place="bottom"
     >
       <Strikethrough className="h-4 w-4" />
     </Toggle>

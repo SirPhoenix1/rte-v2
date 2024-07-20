@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import { Button } from "@/components/ui/button";
 import { Undo } from "lucide-react";
 
@@ -12,6 +12,9 @@ const UndoButton = ({ editor }: UndoButtonProps) => {
       size="sm"
       variant="ghost"
       onClick={() => editor.chain().focus().undo().run()}
+      data-tooltip-id="undoTooltip"
+      data-tooltip-content="Undo (Ctrl+Z)"
+      data-tooltip-place="bottom"
     >
       <Undo className="h-4 w-4" />
     </Button>

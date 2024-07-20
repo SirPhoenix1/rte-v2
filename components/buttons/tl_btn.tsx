@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import { Toggle } from "@/components/ui/toggle";
 import { ListTodo } from "lucide-react";
 
@@ -12,6 +12,9 @@ const TaskListButton = ({ editor }: TaskListButtonProps) => {
       size="sm"
       pressed={editor.isActive("taskList")}
       onPressedChange={() => editor.chain().focus().toggleTaskList().run()}
+      data-tooltip-id="tlTooltip"
+      data-tooltip-content="Checklist (Ctrl+Shift+9)"
+      data-tooltip-place="bottom"
     >
       <ListTodo className="h-4 w-4" />
     </Toggle>

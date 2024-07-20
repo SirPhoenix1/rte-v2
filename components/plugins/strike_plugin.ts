@@ -64,7 +64,7 @@ const StrikePlugin = Strike.extend({
 
   addKeyboardShortcuts() {
     return {
-      "Mod-Shift-x": () => this.editor.commands.toggleStrike(),
+      "Mod-Shift-s": () => this.editor.commands.toggleStrike(),
     };
   },
 });

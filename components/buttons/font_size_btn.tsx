@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,7 +38,13 @@ const FontSizeButton = ({ editor }: FontSizeButtonProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="p-2" variant="ghost">
+        <Button
+          className="p-2"
+          variant="ghost"
+          data-tooltip-id="fontSizeTooltip"
+          data-tooltip-content="Font Size"
+          data-tooltip-place="bottom"
+        >
           {fSize}
         </Button>
       </DropdownMenuTrigger>

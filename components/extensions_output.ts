@@ -30,6 +30,7 @@ import StrikePlugin from "@/components/plugins/strike_plugin";
 import FontFamilyPlugin from "@/components/plugins/font_family_plugin";
 import LineHeightPlugin from "@/components/plugins/line_height_plugin";
 import FontSizePlugin from "@/components/plugins/font_size_plugin";
+import IndentPlugin from "@/components/plugins/indent_plugin";
 
 export {
   Placeholder,
@@ -64,4 +65,5 @@ export {
   FontFamilyPlugin,
   LineHeightPlugin,
   FontSizePlugin,
+  IndentPlugin,
 };

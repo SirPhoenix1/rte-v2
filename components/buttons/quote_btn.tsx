@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import { Toggle } from "@/components/ui/toggle";
 import { Quote } from "lucide-react";
 
@@ -12,6 +12,9 @@ const QuoteButton = ({ editor }: QuoteButtonProps) => {
       size="sm"
       pressed={editor.isActive("blockQuote")}
       onPressedChange={() => editor.chain().focus().toggleBlockquote().run()}
+      data-tooltip-id="quoteTooltip"
+      data-tooltip-content="Quote Block"
+      data-tooltip-place="bottom"
     >
       <Quote className="h-4 w-4" />
     </Toggle>

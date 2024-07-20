@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import { Baseline } from "lucide-react";
 import { useState } from "react";
 import { ColorResult } from "react-color";
@@ -43,7 +43,13 @@ const ColorButton = ({ editor }: ColorButtonProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button className="p-2" variant="ghost">
+        <Button
+          className="p-2"
+          variant="ghost"
+          data-tooltip-id="colorTooltip"
+          data-tooltip-content="Text Color"
+          data-tooltip-place="bottom"
+        >
           <Baseline className="h-4 w-4" color={color} />
         </Button>
       </PopoverTrigger>

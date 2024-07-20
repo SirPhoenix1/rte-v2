@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,7 +21,13 @@ const LineHeightButton = ({ editor }: LineHeightButtonProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="p-2" variant="ghost">
+        <Button
+          className="p-2"
+          variant="ghost"
+          data-tooltip-id="lineHeightTooltip"
+          data-tooltip-content="Line Spacing"
+          data-tooltip-place="bottom"
+        >
           <BetweenHorizontalStart className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>

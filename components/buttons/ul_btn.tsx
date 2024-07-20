@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import { Toggle } from "@/components/ui/toggle";
 import { List } from "lucide-react";
 
@@ -12,6 +12,9 @@ const UnorderedListButton = ({ editor }: UnorderedListButtonProps) => {
       size="sm"
       pressed={editor.isActive("bulletList")}
       onPressedChange={() => editor.chain().focus().toggleBulletList().run()}
+      data-tooltip-id="ulTooltip"
+      data-tooltip-content="Bullet List (Ctrl+Shift+B)"
+      data-tooltip-place="bottom"
     >
       <List className="h-4 w-4" />
     </Toggle>

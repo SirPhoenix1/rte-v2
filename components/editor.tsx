@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
 import EditorToolbar from "@/components/editor-toolbar";
 import * as ext from "@/components/extensions_output";
+import Tooltips from "@/components/tooltips";
 import "@/styles/editor.css";
 
 const Editor = () => {
@@ -42,20 +43,21 @@ const Editor = () => {
       ext.FontSizePlugin,
       ext.StrikePlugin,
       ext.LineHeightPlugin,
+      ext.IndentPlugin,
       ext.TaskList.configure({
         HTMLAttributes: {
-          class: "task-list"
-        }
+          class: "task-list",
+        },
       }),
       ext.BulletList.configure({
         HTMLAttributes: {
-          class: "bullet-list"
-        }
+          class: "bullet-list",
+        },
       }),
       ext.OrderedList.configure({
         HTMLAttributes: {
-          class: "ordered-list"
-        }
+          class: "ordered-list",
+        },
       }),
       ext.Link.configure({
         HTMLAttributes: {
@@ -91,6 +93,7 @@ const Editor = () => {
       {editor && (
         <div className="editor-container">
           <EditorToolbar editor={editor} />
+          <Tooltips />
           <EditorContent editor={editor} />
         </div>
       )}

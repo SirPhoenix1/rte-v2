@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,11 +28,17 @@ const FontFamilyButton = ({ editor }: FontFamilyButtonProps) => {
         <Button
           className={`p-2 no-outline ${fontValue} font-family-btn`}
           variant="ghost"
+          data-tooltip-id="fontFamilyTooltip"
+          data-tooltip-content="Font Family"
+          data-tooltip-place="bottom"
         >
           {fontName}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="scrollable-dropdown" onCloseAutoFocus={handleCloseAutoFocus}>
+      <DropdownMenuContent
+        className="scrollable-dropdown"
+        onCloseAutoFocus={handleCloseAutoFocus}
+      >
         {fontList.map((font) => (
           <DropdownMenuItem
             key={font.name}

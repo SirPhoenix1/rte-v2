@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link2 } from "lucide-react";
@@ -51,7 +51,13 @@ const LinkButton = ({ editor }: LinkButtonProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button size="sm" variant="ghost">
+        <Button
+          size="sm"
+          variant="ghost"
+          data-tooltip-id="linkTooltip"
+          data-tooltip-content="Insert Link"
+          data-tooltip-place="bottom"
+        >
           <Link2 className="h-4 w-4" />
         </Button>
       </PopoverTrigger>

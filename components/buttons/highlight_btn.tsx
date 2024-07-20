@@ -1,5 +1,5 @@
-import { Editor } from "@tiptap/react";
-import { Droplet, Highlighter } from "lucide-react";
+import type { Editor } from "@tiptap/react";
+import { Highlighter } from "lucide-react";
 import { useState } from "react";
 import { ColorResult, TwitterPicker } from "react-color";
 import {
@@ -44,7 +44,13 @@ const HighlightButton = ({ editor }: HighlightButtonProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button className="p-2" variant="ghost">
+        <Button
+          className="p-2"
+          variant="ghost"
+          data-tooltip-id="highlightTooltip"
+          data-tooltip-content="Highlight (Ctrl+Shift+H)"
+          data-tooltip-place="bottom"
+        >
           <Highlighter className="h-4 w-4" color={color} />
         </Button>
       </PopoverTrigger>

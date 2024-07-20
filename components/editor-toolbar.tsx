@@ -1,6 +1,7 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import * as Buttons from "@/components/buttons_output";
 import { useEffect, useState } from "react";
+import "react-tooltip/dist/react-tooltip.css";
 import "@/styles/toolbar.css";
 
 interface EditorToolbarProps {
@@ -31,6 +32,8 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
     <Buttons.OrderedListButton editor={editor} key={"olBtn"} />,
     <Buttons.StrikeButton editor={editor} key={"strikeBtn"} />,
     <Buttons.QuoteButton editor={editor} key={"quoteBtn"} />,
+    <Buttons.OutdentButton editor={editor} key={"outdentBtn"} />,
+    <Buttons.IndentButton editor={editor} key={"indentBtn"} />,
   ];
 
   const updateButtonVisibility = () => {

@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/react";
+import type { Editor } from "@tiptap/react";
 import { Button } from "@/components/ui/button";
 import { Redo } from "lucide-react";
 
@@ -12,6 +12,9 @@ const RedoButton = ({ editor }: RedoButtonProps) => {
       size="sm"
       variant="ghost"
       onClick={() => editor.chain().focus().redo().run()}
+      data-tooltip-id="redoTooltip"
+      data-tooltip-content="Redo (Ctrl+Y)"
+      data-tooltip-place="bottom"
     >
       <Redo className="h-4 w-4" />
     </Button>
