@@ -1,5 +1,6 @@
 const stableColorList = [
   "#000000",
+  "#ffffff",
   "#d9e3f0",
   "#f47373",
   "#697689",

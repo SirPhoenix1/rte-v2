@@ -51,7 +51,10 @@ const ColorPicker = ({
         className="color-picker"
         colors={colors}
         styles={{
-          "default": { input: { display: "none" }, hash: { display: "none" } },
+          default: {
+            input: { display: "none" },
+            hash: { display: "none" },
+          },
         }}
       />
       <div className="color-btn hover:bg-accent hover:text-accent-foreground">
