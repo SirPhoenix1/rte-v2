@@ -34,6 +34,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
     <Buttons.QuoteButton editor={editor} key={"quoteBtn"} />,
     <Buttons.OutdentButton editor={editor} key={"outdentBtn"} />,
     <Buttons.IndentButton editor={editor} key={"indentBtn"} />,
+    <Buttons.AIButton editor={editor} key={"aiBtn"} />,
   ];
 
   const updateButtonVisibility = () => {
