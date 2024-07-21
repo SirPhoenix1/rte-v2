@@ -24,6 +24,7 @@ const Tooltips = () => {
       <Tooltip id="ulTooltip" />
       <Tooltip id="underlineTooltip" />
       <Tooltip id="undoTooltip" />
+      <Tooltip id="aiTooltip" />
     </div>
   );
 };

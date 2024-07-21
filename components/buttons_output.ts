@@ -20,6 +20,7 @@ import LineHeightButton from "@/components/buttons/line_height_btn";
 import TaskListButton from "@/components/buttons/tl_btn";
 import OutdentButton from "@/components/buttons/outdent_btn";
 import IndentButton from "@/components/buttons/indent_btn";
+import AIButton from "@/components/buttons/ai_btn";
 
 export {
   BoldButton,
@@ -44,4 +45,5 @@ export {
   TaskListButton,
   OutdentButton,
   IndentButton,
+  AIButton,
 };

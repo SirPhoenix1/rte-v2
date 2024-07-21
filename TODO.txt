@@ -1,3 +1,7 @@
 1. dropdown and popover in more dropdown broken - check all btns in more menu.
 2. make tab and shift tab four spaces for middle of text, not indent.
 3. make chosen font size / line height seem active in their dropdowns.
+4. word count
+5. ai functionality
+6. editor background color.
+8. button to change editor content's bg color.

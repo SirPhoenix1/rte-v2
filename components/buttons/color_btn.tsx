@@ -50,7 +50,14 @@ const ColorButton = ({ editor }: ColorButtonProps) => {
           data-tooltip-content="Text Color"
           data-tooltip-place="bottom"
         >
-          <Baseline className="h-4 w-4" color={color} />
+          <div className="flex items-center">
+            <span
+              className={`text-base border-b-2 pb-0 leading-none`}
+              style={{ borderBottom: `2px solid ${color}` }}
+            >
+              A
+            </span>
+          </div>
         </Button>
       </PopoverTrigger>
       <PopoverContent className="color-picker-container">
