@@ -8,15 +8,22 @@ import {
 import { Button } from "@/components/ui/button";
 import { BetweenHorizontalStart } from "lucide-react";
 import { line_heights } from "@/components/plugins/line_height_plugin";
+import { useEffect, useState } from "react";
+import { DEFAULT_HEIGHT } from "@/components/plugins/line_height_plugin";
 
 interface LineHeightButtonProps {
   editor: Editor;
 }
 
 const LineHeightButton = ({ editor }: LineHeightButtonProps) => {
-  const handleCloseAutoFocus = (event: Event) => {
-    event.preventDefault();
-  };
+  const [lineHeight, setLineHeight] = useState<string>(DEFAULT_HEIGHT);
+
+  useEffect(() => {
+    let lh = editor.getAttributes("textStyle").lineHeight;
+    if (lh) {
+      setLineHeight(lh);
+    }
+  }, [editor.getAttributes("textStyle").lineHeight]);
 
   return (
     <DropdownMenu>
@@ -31,21 +38,15 @@ const LineHeightButton = ({ editor }: LineHeightButtonProps) => {
           <BetweenHorizontalStart className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        onCloseAutoFocus={handleCloseAutoFocus}
-        className="scrollable-dropdown"
-      >
+      <DropdownMenuContent className="scrollable-dropdown">
         {line_heights.map((height) => (
           <DropdownMenuItem
             key={height}
             onClick={() => {
+              setLineHeight(height);
               editor.chain().focus().setLineHeight(height).run();
             }}
-            className={
-              editor.isActive("textStyle", { lineHeight: height })
-                ? "is-active"
-                : ""
-            }
+            className={lineHeight === height ? "is-active" : ""}
           >
             {height}
           </DropdownMenuItem>

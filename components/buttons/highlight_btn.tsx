@@ -8,8 +8,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import ColorPicker from "@/components/color_picker";
-import { stableColorList, MAX_COLORS } from "@/components/coloring";
+import ColorPicker from "@/components/global/color_picker";
+import { stableColorList, MAX_COLORS } from "@/components/global/coloring";
 
 interface HighlightButtonProps {
   editor: Editor;

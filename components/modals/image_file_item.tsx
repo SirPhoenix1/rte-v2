@@ -4,9 +4,13 @@ import { Upload, UploadCloudIcon, X } from "lucide-react";
 import * as React from "react";
 import { useDropzone, type DropzoneOptions } from "react-dropzone";
 import { twMerge } from "tailwind-merge";
-import { Spinner } from "@/components/spinner";
+import { Spinner } from "@/components/global/spinner";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const variants = {
   base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[200px] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out",
@@ -127,7 +131,7 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
         <Popover modal={true}>
           <PopoverTrigger>
             <button>
-              <Upload className="w-4 h-4 mr-2 inline" color="gray"/>
+              <Upload className="w-4 h-4 mr-2 inline" color="gray" />
               Upload From PC
             </button>
           </PopoverTrigger>
@@ -194,7 +198,6 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
           </PopoverContent>
         </Popover>
       </DropdownMenuItem>
-      
     );
   }
 );

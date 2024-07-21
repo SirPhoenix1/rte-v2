@@ -60,7 +60,12 @@
 
 .font-family-btn {
   display: inline-block;
-  width: 65px;
+  max-width: 65px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.is-active {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
 }

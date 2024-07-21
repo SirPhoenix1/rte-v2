@@ -1,6 +1,6 @@
 "use client";
 
-import Editor from "@/components/editor";
+import Editor from "@/components/global/editor";
 
 export default function Home() {
   return (

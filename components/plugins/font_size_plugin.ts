@@ -20,6 +20,25 @@ declare module "@tiptap/core" {
   }
 }
 
+export const font_sizes = [
+  "8",
+  "9",
+  "10",
+  "11",
+  "12",
+  "14",
+  "18",
+  "24",
+  "30",
+  "36",
+  "48",
+  "60",
+  "72",
+  "96",
+];
+
+export const DEFAULT_FONT_SIZE = font_sizes[4];
+
 const FontSizePlugin = Extension.create<FontSizeOptions>({
   name: "fontSize",
 
@@ -35,7 +54,7 @@ const FontSizePlugin = Extension.create<FontSizeOptions>({
         types: this.options.types,
         attributes: {
           fontSize: {
-            default: null,
+            default: DEFAULT_FONT_SIZE + "pt",
             parseHTML: (element) =>
               element.style.fontSize.replace(/['"]+/g, ""),
             renderHTML: (attributes) => {

@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
-import EditorToolbar from "@/components/editor-toolbar";
-import * as ext from "@/components/extensions_output";
-import Tooltips from "@/components/tooltips";
+import EditorToolbar from "@/components/global/editor-toolbar";
+import * as ext from "@/components/global/extensions_output";
+import Tooltips from "@/components/global/tooltips";
 import "@/styles/editor.css";
+import { DEFAULT_FONT_FAMILY } from "../plugins/font_family_plugin";
 
 const Editor = () => {
   const editor = useEditor({
@@ -15,10 +16,10 @@ const Editor = () => {
     },
     content: "",
     editable: true,
-    onCreate: ({ editor }) => {
-      editor.commands.setFontFamily("inter");
-    },
     immediatelyRender: false,
+    onCreate: () => {
+      editor?.commands.setFontFamily(DEFAULT_FONT_FAMILY.className);
+    },
     extensions: [
       ext.Blockquote,
       ext.ListItem,

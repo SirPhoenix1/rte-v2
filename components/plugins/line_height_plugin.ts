@@ -22,6 +22,7 @@ declare module "@tiptap/core" {
 }
 
 export const line_heights = ["1", "1.15", "1.5", "2", "2.5", "3"];
+export const DEFAULT_HEIGHT = "1";
 
 const LineHeightPlugin = Extension.create<LineHeightOptions>({
   name: "lineHeight",
@@ -30,7 +31,7 @@ const LineHeightPlugin = Extension.create<LineHeightOptions>({
     return {
       types: ["heading", "paragraph"],
       heights: line_heights,
-      defaultHeight: "1",
+      defaultHeight: DEFAULT_HEIGHT,
     };
   },
 

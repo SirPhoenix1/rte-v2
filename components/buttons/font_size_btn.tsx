@@ -6,33 +6,37 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  DEFAULT_FONT_SIZE,
+  font_sizes,
+} from "@/components/plugins/font_size_plugin";
 
 interface FontSizeButtonProps {
   editor: Editor;
 }
 
-const font_sizes = [
-  "8",
-  "9",
-  "10",
-  "11",
-  "12",
-  "14",
-  "18",
-  "24",
-  "30",
-  "36",
-  "48",
-  "60",
-  "72",
-  "96",
-];
-
 const FontSizeButton = ({ editor }: FontSizeButtonProps) => {
-  const [fSize, setFSize] = useState(font_sizes[4]);
-  const handleCloseAutoFocus = (event: Event) => {
-    event.preventDefault();
+  const [fSize, setFSize] = useState(DEFAULT_FONT_SIZE);
+
+  useEffect(() => {
+    const currentSize = font_sizes.find((size) =>
+      editor.isActive({ fontSize: size + "pt" })
+    );
+    if (currentSize) setFSize(currentSize);
+  }, [editor.state.selection]);
+
+  const itemClassName = (size: string) => {
+    if (fSize === size) return "is-active";
+  };
+
+  const handleItemClick = (size: string) => {
+    setFSize(size);
+    editor
+      .chain()
+      .focus()
+      .setFontSize(size + "pt")
+      .run();
   };
 
   return (
@@ -48,26 +52,12 @@ const FontSizeButton = ({ editor }: FontSizeButtonProps) => {
           {fSize}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        onCloseAutoFocus={handleCloseAutoFocus}
-        className="scrollable-dropdown"
-      >
+      <DropdownMenuContent className="scrollable-dropdown">
         {font_sizes.map((size) => (
           <DropdownMenuItem
             key={size}
-            onClick={() => {
-              editor
-                .chain()
-                .focus()
-                .setFontSize(size + "pt")
-                .run();
-              setFSize(size);
-            }}
-            className={
-              editor.isActive("textStyle", { FontSize: size })
-                ? "is-active"
-                : ""
-            }
+            onClick={() => handleItemClick(size)}
+            className={itemClassName(size)}
           >
             {size}
           </DropdownMenuItem>

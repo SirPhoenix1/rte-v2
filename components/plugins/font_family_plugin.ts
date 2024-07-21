@@ -1,5 +1,9 @@
 import FontFamily from "@tiptap/extension-font-family";
 
+import { fontList } from "@/app/fonts";
+
+export const DEFAULT_FONT_FAMILY = fontList[0];
+
 const FontFamilyPlugin = FontFamily.extend({
   name: "fontFamily",
 
@@ -9,7 +13,7 @@ const FontFamilyPlugin = FontFamily.extend({
         types: this.options.types,
         attributes: {
           fontFamily: {
-            default: null,
+            default: DEFAULT_FONT_FAMILY.className,
             parseHTML: (element) =>
               element.style.fontFamily?.replace(/['"]+/g, ""),
             renderHTML: (attributes) => {

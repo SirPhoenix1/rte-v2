@@ -140,29 +140,30 @@ export const baskervville = Baskervville({
   display: "swap",
 });
 
-interface Font {
+export type Font = {
   name: string;
-  value: string;
-}
+  className: string;
+};
 
 export const fontList: Font[] = [
-  { name: "Roboto", value: roboto.className },
-  { name: "Open Sans", value: open_sans.className },
-  { name: "Lato", value: lato.className },
-  { name: "Courier Prime", value: courier_prime.className },
-  { name: "Poppins", value: poppins.className },
-  { name: "Fraunces", value: fraunces.className },
-  { name: "Playfair Display", value: playfair_display.className },
-  { name: "Montserrat", value: montserrat.className },
-  { name: "Anton", value: anton.className },
-  { name: "Outfit", value: outfit.className },
-  { name: "Radley", value: radley.className },
-  { name: "Arimo", value: arimo.className },
-  { name: "Josefin Sans", value: josefin_sans.className },
-  { name: "Merriweather", value: merriweather.className },
-  { name: "Tangerine", value: tangerine.className },
-  { name: "Tinos", value: tinos.className },
-  { name: "Comic Neue", value: comic_neue.className },
-  { name: "Garamond", value: garamond.className },
-  { name: "Baskervville", value: baskervville.className },
+  { name: "Inter", className: inter.className },
+  { name: "Roboto", className: roboto.className },
+  { name: "Open Sans", className: open_sans.className },
+  { name: "Lato", className: lato.className },
+  { name: "Courier Prime", className: courier_prime.className },
+  { name: "Poppins", className: poppins.className },
+  { name: "Fraunces", className: fraunces.className },
+  { name: "Playfair Display", className: playfair_display.className },
+  { name: "Montserrat", className: montserrat.className },
+  { name: "Anton", className: anton.className },
+  { name: "Outfit", className: outfit.className },
+  { name: "Radley", className: radley.className },
+  { name: "Arimo", className: arimo.className },
+  { name: "Josefin Sans", className: josefin_sans.className },
+  { name: "Merriweather", className: merriweather.className },
+  { name: "Tangerine", className: tangerine.className },
+  { name: "Tinos", className: tinos.className },
+  { name: "Comic Neue", className: comic_neue.className },
+  { name: "Garamond", className: garamond.className },
+  { name: "Baskervville", className: baskervville.className },
 ];

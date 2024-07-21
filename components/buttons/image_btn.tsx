@@ -15,10 +15,6 @@ interface ImageButtonProps {
 }
 
 const ImageButton = ({ editor }: ImageButtonProps) => {
-  const handleCloseAutoFocus = (event: Event) => {
-    event.preventDefault();
-  };
-
   const handleFile = (file?: File) => {
     if (!file) {
       return;
@@ -49,7 +45,7 @@ const ImageButton = ({ editor }: ImageButtonProps) => {
         </Button>
       </DropdownMenuTrigger>
       {/** Uploading an image from the computer's file explorer. */}
-      <DropdownMenuContent onCloseAutoFocus={handleCloseAutoFocus}>
+      <DropdownMenuContent>
         {/** Uploading an image from PC's file explorer. */}
         <SingleImageDropzone onChange={handleFile} />
         {/** Uploading an image from a link. */}

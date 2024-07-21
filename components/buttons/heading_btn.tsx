@@ -13,10 +13,6 @@ interface HeadingButtonProps {
 }
 
 const HeadingButton = ({ editor }: HeadingButtonProps) => {
-  const handleCloseAutoFocus = (event: Event) => {
-    event.preventDefault();
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -30,7 +26,7 @@ const HeadingButton = ({ editor }: HeadingButtonProps) => {
           <Heading className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent onCloseAutoFocus={handleCloseAutoFocus}>
+      <DropdownMenuContent>
         <DropdownMenuItem
           onClick={() => editor.chain().focus().setParagraph().run()}
         >

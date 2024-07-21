@@ -1,13 +1,6 @@
 import type { Editor } from "@tiptap/react";
 import { ChangeEvent, useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Link2 } from "lucide-react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Input } from "@/components/ui/input";
+import LinkPopover from "@/components/modals/text_link_popover";
 
 interface LinkButtonProps {
   editor: Editor;
@@ -49,45 +42,12 @@ const LinkButton = ({ editor }: LinkButtonProps) => {
   };
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          size="sm"
-          variant="ghost"
-          data-tooltip-id="linkTooltip"
-          data-tooltip-content="Insert Link"
-          data-tooltip-place="bottom"
-        >
-          <Link2 className="h-4 w-4" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent>
-        <div>
-          <h3>Enter URL</h3>
-          <Input
-            type="text"
-            placeholder="https://example.com"
-            value={url}
-            onChange={handleChange}
-            className="no-outline my-3"
-          />
-          <div className="flex justify-between">
-            <Button
-              onClick={handleCancel}
-              className="text-sm px-2 py-1 h-8 w-20"
-            >
-              Remove
-            </Button>
-            <Button
-              onClick={handleSubmit}
-              className="text-sm px-2 py-1 h-8 w-20"
-            >
-              Enter
-            </Button>
-          </div>
-        </div>
-      </PopoverContent>
-    </Popover>
+    <LinkPopover
+      url={url}
+      handleChange={handleChange}
+      handleCancel={handleCancel}
+      handleSubmit={handleSubmit}
+    />
   );
 };
 

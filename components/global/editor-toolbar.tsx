@@ -1,5 +1,5 @@
 import type { Editor } from "@tiptap/react";
-import * as Buttons from "@/components/buttons_output";
+import * as Buttons from "@/components/global/buttons_output";
 import { useEffect, useState } from "react";
 import "react-tooltip/dist/react-tooltip.css";
 import "@/styles/toolbar.css";

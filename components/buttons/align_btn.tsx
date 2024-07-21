@@ -14,10 +14,6 @@ interface AlignButtonProps {
 }
 
 const AlignButton = ({ editor }: AlignButtonProps) => {
-  const handleCloseAutoFocus = (event: Event) => {
-    event.preventDefault();
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -42,10 +38,7 @@ const AlignButton = ({ editor }: AlignButtonProps) => {
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="drop-horizontal-menu"
-        onCloseAutoFocus={handleCloseAutoFocus}
-      >
+      <DropdownMenuContent className="drop-horizontal-menu">
         <DropdownMenuItem
           onClick={() => editor.chain().focus().setTextAlign("left").run()}
           className={
