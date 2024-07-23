@@ -1,4 +1,3 @@
-default font size adn family not applying
 word count
 tooltip below in z axis than editor border.
 button to change editor content's bg color.

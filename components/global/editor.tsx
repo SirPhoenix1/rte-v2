@@ -3,8 +3,10 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import EditorToolbar from "@/components/global/editor-toolbar";
 import * as ext from "@/components/global/extensions_output";
 import Tooltips from "@/components/global/tooltips";
+import { DEFAULT_FONT_FAMILY } from "@/components/plugins/font_family_plugin";
+import { DEFAULT_FONT_SIZE } from "@/components/plugins/font_size_plugin";
 import "@/styles/editor.css";
-import { DEFAULT_FONT_FAMILY } from "../plugins/font_family_plugin";
+import WordCounter from "./word_counter";
 
 const Editor = () => {
   const editor = useEditor({
@@ -17,9 +19,6 @@ const Editor = () => {
     content: "",
     editable: true,
     immediatelyRender: false,
-    onCreate: () => {
-      editor?.commands.setFontFamily(DEFAULT_FONT_FAMILY.className);
-    },
     extensions: [
       ext.Blockquote,
       ext.ListItem,
@@ -45,6 +44,7 @@ const Editor = () => {
       ext.StrikePlugin,
       ext.LineHeightPlugin,
       ext.IndentPlugin,
+      ext.CharacterCount,
       ext.TaskList.configure({
         HTMLAttributes: {
           class: "task-list",
@@ -86,16 +86,22 @@ const Editor = () => {
   });
 
   useEffect(() => {
-    editor?.commands.focus();
+    editor
+      ?.chain()
+      .focus()
+      .setFontFamily(DEFAULT_FONT_FAMILY.className)
+      .setFontSize(DEFAULT_FONT_SIZE + "pt")
+      .run();
   }, [editor]);
 
   return (
     <>
       {editor && (
-        <div className="editor-container">
+        <div className="relative">
           <EditorToolbar editor={editor} />
           <Tooltips />
           <EditorContent editor={editor} />
+          <WordCounter editor={editor} />
         </div>
       )}
     </>

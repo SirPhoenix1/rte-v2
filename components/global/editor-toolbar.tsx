@@ -13,6 +13,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   const [dropdownButtons, setDropdownButtons] = useState<string[]>([]);
 
   const buttonComponents = [
+    <Buttons.AIButton editor={editor} key={"aiBtn"} />,
     <Buttons.UndoButton editor={editor} key={"undoBtn"} />,
     <Buttons.RedoButton editor={editor} key={"redoBtn"} />,
     <Buttons.HeadingButton editor={editor} key={"headingBtn"} />,
@@ -34,7 +35,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
     <Buttons.QuoteButton editor={editor} key={"quoteBtn"} />,
     <Buttons.OutdentButton editor={editor} key={"outdentBtn"} />,
     <Buttons.IndentButton editor={editor} key={"indentBtn"} />,
-    <Buttons.AIButton editor={editor} key={"aiBtn"} />,
+    <Buttons.WordCountButton key={"wordCountBtn"} />,
   ];
 
   const updateButtonVisibility = () => {

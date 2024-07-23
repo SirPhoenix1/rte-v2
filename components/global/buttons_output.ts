@@ -21,6 +21,7 @@ import TaskListButton from "@/components/buttons/tl_btn";
 import OutdentButton from "@/components/buttons/outdent_btn";
 import IndentButton from "@/components/buttons/indent_btn";
 import AIButton from "@/components/buttons/ai_btn";
+import WordCountButton from "@/components/buttons/word_count_btn";
 
 export {
   BoldButton,
@@ -46,4 +47,5 @@ export {
   OutdentButton,
   IndentButton,
   AIButton,
+  WordCountButton,
 };
