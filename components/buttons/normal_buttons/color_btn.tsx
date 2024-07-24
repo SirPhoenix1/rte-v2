@@ -1,6 +1,6 @@
 import type { Editor } from "@tiptap/react";
 import { Baseline } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorResult } from "react-color";
 import {
   Popover,
@@ -8,16 +8,24 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import ColorPicker from "@/components/global/color_picker";
-import { stableColorList, MAX_COLORS } from "@/components/global/coloring";
+import ColorPicker from "@/components/modals/color_picker";
+import {
+  stableColorList,
+  MAX_COLORS,
+  Color,
+} from "@/components/global/coloring";
+import { useTheme } from "next-themes";
+import { Theme } from "@/components/global/themes";
 interface ColorButtonProps {
   editor: Editor;
 }
 
 const ColorButton = ({ editor }: ColorButtonProps) => {
-  const [color, setColor] = useState("#000000");
+  const [color, setColor] = useState<string>(Color.BLACK);
   const [colorList, setList] = useState<string[]>(stableColorList);
   const [customColors, setCustomColors] = useState<string[]>([]);
+  const [themeColor, setThemeColor] = useState<string>(Color.BLACK);
+  const { theme } = useTheme();
 
   const applyColor = (selectedColor: ColorResult) => {
     setColor(selectedColor.hex);
@@ -36,9 +44,19 @@ const ColorButton = ({ editor }: ColorButtonProps) => {
   };
 
   const handleNoneClick = () => {
-    setColor("#000000");
+    setColor(Color.BLACK);
     editor.chain().focus().unsetColor().run();
   };
+
+  useEffect(() => {
+    if (theme === Theme.DARK) {
+      setThemeColor(Color.WHITE);
+      setColor(Color.WHITE);
+    } else {
+      setThemeColor(Color.BLACK);
+      setColor(Color.BLACK);
+    }
+  }, [theme]);
 
   return (
     <Popover>
@@ -52,8 +70,11 @@ const ColorButton = ({ editor }: ColorButtonProps) => {
         >
           <div className="flex items-center">
             <span
-              className={`text-base border-b-2 pb-0 leading-none`}
-              style={{ borderBottom: `2px solid ${color}` }}
+              className={"text-base border-b-2 pb-0 leading-none"}
+              style={{
+                borderBottom: `2px solid ${color}`,
+                color: `${themeColor}`,
+              }}
             >
               A
             </span>

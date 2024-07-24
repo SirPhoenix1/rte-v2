@@ -1,6 +1,6 @@
 import type { Editor } from "@tiptap/react";
 import { Highlighter } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorResult, TwitterPicker } from "react-color";
 import {
   Popover,
@@ -8,17 +8,25 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import ColorPicker from "@/components/global/color_picker";
-import { stableColorList, MAX_COLORS } from "@/components/global/coloring";
+import ColorPicker from "@/components/modals/color_picker";
+import {
+  stableColorList,
+  MAX_COLORS,
+  Color,
+} from "@/components/global/coloring";
+import { Theme } from "@/components/global/themes";
+import { useTheme } from "next-themes";
 
 interface HighlightButtonProps {
   editor: Editor;
 }
 
 const HighlightButton = ({ editor }: HighlightButtonProps) => {
-  const [color, setColor] = useState("#000000");
+  const [color, setColor] = useState<string>(Color.YELLOW);
   const [colorList, setList] = useState<string[]>(stableColorList);
   const [customColors, setCustomColors] = useState<string[]>([]);
+  const [themeColor, setThemeColor] = useState<string>(Color.BLACK);
+  const { theme } = useTheme();
 
   const applyColor = (selectedColor: ColorResult) => {
     setColor(selectedColor.hex);
@@ -37,9 +45,17 @@ const HighlightButton = ({ editor }: HighlightButtonProps) => {
   };
 
   const handleNoneClick = () => {
-    setColor("#000000");
+    setColor(Color.BLACK);
     editor.chain().focus().unsetHighlight().run();
   };
+
+  useEffect(() => {
+    if (theme === Theme.DARK) {
+      setThemeColor(Color.WHITE);
+    } else {
+      setThemeColor(Color.BLACK);
+    }
+  }, [theme]);
 
   return (
     <Popover>
@@ -51,7 +67,17 @@ const HighlightButton = ({ editor }: HighlightButtonProps) => {
           data-tooltip-content="Highlight (Ctrl+Shift+H)"
           data-tooltip-place="bottom"
         >
-          <Highlighter className="h-4 w-4" color={color} />
+          <div className="flex items-center">
+            <span
+              className={"text-base border-b-2 pb-0 leading-none"}
+              style={{
+                borderBottom: `2px solid ${color}`,
+                color: `${themeColor}`,
+              }}
+            >
+              <Highlighter className="h-4 w-4" />
+            </span>
+          </div>
         </Button>
       </PopoverTrigger>
       <PopoverContent className="color-picker-container">

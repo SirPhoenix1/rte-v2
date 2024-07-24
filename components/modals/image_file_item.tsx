@@ -128,7 +128,7 @@ const SingleImageDropzone = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <DropdownMenuItem className="text-xs" onClick={(e) => e.preventDefault()}>
-        <Popover modal={true}>
+        <Popover modal>
           <PopoverTrigger>
             <button>
               <Upload className="w-4 h-4 mr-2 inline" color="gray" />

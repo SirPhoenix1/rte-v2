@@ -11,66 +11,62 @@ const imgW = 1000;
 const imgH = 1000;
 
 interface CameraItemProps {
-    editor: Editor,
+  editor: Editor;
 }
 
-const CameraItem = ({editor}: CameraItemProps) => {
-    const webcamRef = useRef<Webcam>(null);
-    const [imgSrc, setImgSrc] = useState<string | null>(null);
+const CameraItem = ({ editor }: CameraItemProps) => {
+  const webcamRef = useRef<Webcam>(null);
+  const [imgSrc, setImgSrc] = useState<string | null>(null);
 
-    const capture = useCallback(() => {
-        if(webcamRef.current){
-            const imageSrc = webcamRef.current.getScreenshot();
-            setImgSrc(imageSrc);
-        }
-    },[webcamRef]);
+  const capture = useCallback(() => {
+    if (webcamRef.current) {
+      const imageSrc = webcamRef.current.getScreenshot();
+      setImgSrc(imageSrc);
+    }
+  }, [webcamRef]);
 
-    const retake = () => {
-        setImgSrc(null);
-    };
+  const retake = () => {
+    setImgSrc(null);
+  };
 
-    const submit = () => {
-        if(imgSrc){
-            editor.chain().focus().setImage({src: imgSrc, alt: ""}).run();
-        } 
-    };
+  const submit = () => {
+    if (imgSrc) {
+      editor.chain().focus().setImage({ src: imgSrc, alt: "" }).run();
+    }
+  };
 
-    return (
-        <DropdownMenuItem className="text-xs" onClick={(e) => e.preventDefault()}>
-            <Popover modal={true}>
-                <PopoverTrigger asChild>
-                    <button>
-                        <Camera className="h-4 w-4 mr-2 inline" color="gray"/>
-                        Upload From Camera
-                    </button>
-                </PopoverTrigger>
-                <PopoverContent>
-                    <div>
-                        {imgSrc ? (
-                            <>
-                                <Image src={imgSrc} alt="webcam" width={imgW} height={imgH}/>
-                                <div className="mt-3 flex justify-between">
-                                    <Button onClick={retake}>Retake</Button>
-                                    <Button onClick={submit}>Confirm</Button>
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                            <Webcam height={imgH} width={imgW} ref={webcamRef}/>
-                            <div className="text-right mt-3">
-                                <Button onClick={capture}>
-                                    Capture Photo
-                                </Button>
-                            </div>
-                            </>
-                        )}
-                        
-                    </div>
-                </PopoverContent>
-            </Popover>
-            
-        </DropdownMenuItem>
-    );
+  return (
+    <DropdownMenuItem className="text-xs" onClick={(e) => e.preventDefault()}>
+      <Popover modal>
+        <PopoverTrigger asChild>
+          <button>
+            <Camera className="h-4 w-4 mr-2 inline" color="gray" />
+            Upload From Camera
+          </button>
+        </PopoverTrigger>
+        <PopoverContent>
+          <div>
+            {imgSrc ? (
+              <>
+                <Image src={imgSrc} alt="webcam" width={imgW} height={imgH} />
+                <div className="mt-3 flex justify-between">
+                  <Button onClick={retake}>Retake</Button>
+                  <Button onClick={submit}>Confirm</Button>
+                </div>
+              </>
+            ) : (
+              <>
+                <Webcam height={imgH} width={imgW} ref={webcamRef} />
+                <div className="text-right mt-3">
+                  <Button onClick={capture}>Capture Photo</Button>
+                </div>
+              </>
+            )}
+          </div>
+        </PopoverContent>
+      </Popover>
+    </DropdownMenuItem>
+  );
 };
 
 export default CameraItem;

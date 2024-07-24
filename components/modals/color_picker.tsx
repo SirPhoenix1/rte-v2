@@ -64,7 +64,7 @@ const ColorPicker = ({
         </button>
       </div>
       <div className="color-btn hover:bg-accent hover:text-accent-foreground">
-        <Popover open={customOpen} onOpenChange={toggleCustomOpen}>
+        <Popover modal>
           <PopoverTrigger>
             <button>
               <CirclePlus className="circle-plus-icon" />

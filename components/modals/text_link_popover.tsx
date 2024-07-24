@@ -22,7 +22,7 @@ const LinkPopover = ({
   handleSubmit,
 }: LinkPopoverProps) => {
   return (
-    <Popover>
+    <Popover modal>
       <PopoverTrigger asChild>
         <Button
           size="sm"
@@ -30,6 +30,7 @@ const LinkPopover = ({
           data-tooltip-id="linkTooltip"
           data-tooltip-content="Insert Link"
           data-tooltip-place="bottom"
+          onClick={(e) => e.stopPropagation()}
         >
           <Link2 className="h-4 w-4" />
         </Button>

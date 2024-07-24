@@ -1,5 +1,3 @@
-button to change editor content's bg color.
-Popovers in More dropdown broken.
+Colorpicker in More dropdown broken.
 make tab and shift tab four spaces for middle of text, not indent.
 ai functionality
-

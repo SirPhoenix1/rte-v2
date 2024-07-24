@@ -14,4 +14,10 @@ const stableColorList = [
 
 const MAX_COLORS = 14;
 
-export { stableColorList, MAX_COLORS };
+const enum Color {
+  BLACK = "#000000",
+  WHITE = "#ffffff",
+  YELLOW = "#FFFF00",
+}
+
+export { stableColorList, MAX_COLORS, Color };
