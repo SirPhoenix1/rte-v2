@@ -18,7 +18,7 @@ const Editor = () => {
     },
     content: "",
     editable: true,
-    immediatelyRender: false,
+    immediatelyRender: true,
     extensions: [
       ext.Blockquote,
       ext.ListItem,

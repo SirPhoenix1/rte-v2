@@ -1,0 +1,7 @@
+.body {
+  pointer-events: auto !important;
+}
+
+.parchment body {
+  background-image: url("/assets/images/parchment.jpg");
+}

@@ -1,4 +1,4 @@
-import { Tooltip } from "react-tooltip";
+import Tooltip from "@/components/modals/tooltip";
 
 const Tooltips = () => {
   return (
