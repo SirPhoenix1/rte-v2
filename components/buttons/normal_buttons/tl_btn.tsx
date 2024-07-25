@@ -15,6 +15,7 @@ const TaskListButton = ({ editor }: TaskListButtonProps) => {
       data-tooltip-id="tlTooltip"
       data-tooltip-content="Checklist (Ctrl+Shift+9)"
       data-tooltip-place="bottom"
+      className="toolBtn"
     >
       <ListTodo className="h-4 w-4" />
     </Toggle>

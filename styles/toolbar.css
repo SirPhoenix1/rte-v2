@@ -3,10 +3,6 @@
   overflow-y: auto;
 }
 
-.no-outline:focus {
-  box-shadow: none;
-}
-
 .color-picker-container {
   width: fit-content;
   height: fit-content;
@@ -60,7 +56,9 @@
 
 .font-family-btn {
   display: inline-block;
-  max-width: 65px;
+  font-size: small;
+  min-width: 50px;
+  max-width: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -68,4 +66,13 @@
 .is-active {
   background-color: hsl(var(--muted));
   color: hsl(var(--muted-foreground));
+}
+
+.toolBtn {
+  padding: 0.5rem;
+  width: 40px;
+}
+
+.toolBtn:focus {
+  box-shadow: none;
 }

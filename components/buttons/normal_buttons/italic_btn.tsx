@@ -15,6 +15,7 @@ const ItalicButton = ({ editor }: ItalicButtonProps) => {
       data-tooltip-id="italicTooltip"
       data-tooltip-content="Italic (Ctrl+I)"
       data-tooltip-place="bottom"
+      className="toolBtn"
     >
       <Italic className="h-4 w-4" />
     </Toggle>

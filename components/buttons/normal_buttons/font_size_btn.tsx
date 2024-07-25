@@ -7,10 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import {
-  DEFAULT_FONT_SIZE,
-  font_sizes,
-} from "@/components/plugins/font_size_plugin";
+import { DEFAULT_FONT_SIZE, font_sizes } from "@/plugins/font_size_plugin";
 
 interface FontSizeButtonProps {
   editor: Editor;
@@ -43,7 +40,7 @@ const FontSizeButton = ({ editor }: FontSizeButtonProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="p-2"
+          className="toolBtn"
           variant="ghost"
           data-tooltip-id="fontSizeTooltip"
           data-tooltip-content="Font Size"

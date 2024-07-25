@@ -15,6 +15,7 @@ const UnderlineButton = ({ editor }: UnderlineButtonProps) => {
       data-tooltip-id="underlineTooltip"
       data-tooltip-content="Underline (Ctrl+U)"
       data-tooltip-place="bottom"
+      className="toolBtn"
     >
       <Underline className="h-4 w-4" />
     </Toggle>

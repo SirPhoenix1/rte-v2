@@ -17,7 +17,7 @@ const HeadingButton = ({ editor }: HeadingButtonProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="p-2"
+          className="toolBtn"
           variant="ghost"
           data-tooltip-id="headingTooltip"
           data-tooltip-content="Heading (Ctrl+Alt+[1-6])"

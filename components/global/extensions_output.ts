@@ -27,11 +27,11 @@ import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import CharacterCount from "@tiptap/extension-character-count";
 import ImageResize from "tiptap-extension-resize-image";
-import StrikePlugin from "@/components/plugins/strike_plugin";
-import FontFamilyPlugin from "@/components/plugins/font_family_plugin";
-import LineHeightPlugin from "@/components/plugins/line_height_plugin";
-import FontSizePlugin from "@/components/plugins/font_size_plugin";
-import IndentPlugin from "@/components/plugins/indent_plugin";
+import StrikePlugin from "@/plugins/strike_plugin";
+import FontFamilyPlugin from "@/plugins/font_family_plugin";
+import LineHeightPlugin from "@/plugins/line_height_plugin";
+import FontSizePlugin from "@/plugins/font_size_plugin";
+import IndentPlugin from "@/plugins/indent_plugin";
 
 export {
   Placeholder,

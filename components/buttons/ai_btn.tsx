@@ -73,7 +73,7 @@ const AIButton = ({ editor }: AIButtonProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="p-2 no-outline h-[35px]"
+          className="toolBtn h-[35px]"
           variant="ghost"
           data-tooltip-id="aiTooltip"
           data-tooltip-content="Author Desk's Specialty"

@@ -18,7 +18,7 @@ const AlignButton = ({ editor }: AlignButtonProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="p-2 no-outline"
+          className="toolBtn"
           variant="ghost"
           data-tooltip-id="alignTooltip"
           data-tooltip-content="Align"

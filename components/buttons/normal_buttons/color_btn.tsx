@@ -1,5 +1,4 @@
 import type { Editor } from "@tiptap/react";
-import { Baseline } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ColorResult } from "react-color";
 import {
@@ -24,7 +23,7 @@ const ColorButton = ({ editor }: ColorButtonProps) => {
   const [color, setColor] = useState<string>(Color.BLACK);
   const [colorList, setList] = useState<string[]>(stableColorList);
   const [customColors, setCustomColors] = useState<string[]>([]);
-  const [themeColor, setThemeColor] = useState<string>(Color.BLACK);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const { theme } = useTheme();
 
   const applyColor = (selectedColor: ColorResult) => {
@@ -48,32 +47,39 @@ const ColorButton = ({ editor }: ColorButtonProps) => {
     editor.chain().focus().unsetColor().run();
   };
 
+  const handleClick = (e: any) => {
+    if (!showModal) e.stopPropagation();
+    toggleShowModal();
+  };
+
+  const toggleShowModal = () => {
+    setShowModal(!showModal);
+  };
+
   useEffect(() => {
     if (theme === Theme.DARK) {
-      setThemeColor(Color.WHITE);
       setColor(Color.WHITE);
     } else {
-      setThemeColor(Color.BLACK);
       setColor(Color.BLACK);
     }
   }, [theme]);
 
   return (
-    <Popover>
+    <Popover modal open={showModal} onOpenChange={toggleShowModal}>
       <PopoverTrigger asChild>
         <Button
-          className="p-2"
+          className="toolBtn"
           variant="ghost"
           data-tooltip-id="colorTooltip"
           data-tooltip-content="Text Color"
           data-tooltip-place="bottom"
+          onClick={handleClick}
         >
           <div className="flex items-center">
             <span
               className={"text-base border-b-2 pb-0 leading-none"}
               style={{
                 borderBottom: `2px solid ${color}`,
-                color: `${themeColor}`,
               }}
             >
               A

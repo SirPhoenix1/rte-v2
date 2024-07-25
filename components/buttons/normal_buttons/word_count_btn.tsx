@@ -20,6 +20,7 @@ const WordCountButton = () => {
       data-tooltip-id="wordCountTooltip"
       data-tooltip-content="Word Count"
       data-tooltip-place="bottom"
+      className="toolBtn"
     >
       <span className="text-base w-6">W</span>
     </Toggle>

@@ -15,6 +15,7 @@ const UnorderedListButton = ({ editor }: UnorderedListButtonProps) => {
       data-tooltip-id="ulTooltip"
       data-tooltip-content="Bullet List (Ctrl+Shift+B)"
       data-tooltip-place="bottom"
+      className="toolBtn"
     >
       <List className="h-4 w-4" />
     </Toggle>

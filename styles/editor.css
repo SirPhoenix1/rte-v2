@@ -138,3 +138,7 @@
   color: var(--hyperlink-blue);
   text-decoration: underline;
 }
+
+[data-theme="dark"] .color-picker {
+  background-color: var(--popover) !important;
+}

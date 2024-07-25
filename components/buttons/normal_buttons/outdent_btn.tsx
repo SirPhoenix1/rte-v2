@@ -15,6 +15,7 @@ const OutdentButton = ({ editor }: UndoButtonProps) => {
       data-tooltip-id="outdentTooltip"
       data-tooltip-content="Decrease Indent"
       data-tooltip-place="bottom"
+      className="toolBtn"
     >
       <IndentDecrease className="h-4 w-4" />
     </Button>

@@ -3,8 +3,8 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import EditorToolbar from "@/components/global/editor-toolbar";
 import * as ext from "@/components/global/extensions_output";
 import Tooltips from "@/components/global/tooltips";
-import { DEFAULT_FONT_FAMILY } from "@/components/plugins/font_family_plugin";
-import { DEFAULT_FONT_SIZE } from "@/components/plugins/font_size_plugin";
+import { DEFAULT_FONT_FAMILY } from "@/plugins/font_family_plugin";
+import { DEFAULT_FONT_SIZE } from "@/plugins/font_size_plugin";
 import "@/styles/editor.css";
 import WordCounter from "./word_counter";
 

@@ -15,6 +15,7 @@ const OrderedListButton = ({ editor }: OrderedListButtonProps) => {
       data-tooltip-id="olTooltip"
       data-tooltip-content="Numbered List (Ctrl+Shift+7)"
       data-tooltip-place="bottom"
+      className="toolBtn"
     >
       <ListOrdered className="h-4 w-4" />
     </Toggle>

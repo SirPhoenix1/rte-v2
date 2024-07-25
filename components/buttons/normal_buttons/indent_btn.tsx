@@ -15,6 +15,7 @@ const IndentButton = ({ editor }: UndoButtonProps) => {
       data-tooltip-id="indentTooltip"
       data-tooltip-content="Increase Indent"
       data-tooltip-place="bottom"
+      className="toolBtn"
     >
       <IndentIncrease className="h-4 w-4" />
     </Button>

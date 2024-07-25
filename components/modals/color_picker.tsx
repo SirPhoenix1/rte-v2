@@ -44,12 +44,13 @@ const ColorPicker = ({
   };
 
   return (
-    <div>
+    <div className="color-picker-container">
       <TwitterPicker
         color={color}
         onChangeComplete={onChangeComplete}
         className="color-picker"
         colors={colors}
+        triangle="hide"
         styles={{
           default: {
             input: { display: "none" },
@@ -87,4 +88,4 @@ const ColorPicker = ({
   );
 };
 
-export default React.memo(ColorPicker);
+export default ColorPicker;

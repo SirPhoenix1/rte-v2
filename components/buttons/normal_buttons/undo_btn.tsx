@@ -15,6 +15,7 @@ const UndoButton = ({ editor }: UndoButtonProps) => {
       data-tooltip-id="undoTooltip"
       data-tooltip-content="Undo (Ctrl+Z)"
       data-tooltip-place="bottom"
+      className="toolBtn"
     >
       <Undo className="h-4 w-4" />
     </Button>

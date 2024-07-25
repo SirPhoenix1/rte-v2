@@ -31,7 +31,7 @@ const IndentPlugin = Extension.create<IndentOptions, never>({
   addOptions() {
     return {
       names: ["heading", "paragraph"],
-      indentRange: 16, // Set indentRange to 16 pixels for 4 spaces
+      indentRange: 16,
       minIndentLevel: 0,
       maxIndentLevel: 16 * 10,
       defaultIndentLevel: 0,
@@ -64,13 +64,19 @@ const IndentPlugin = Extension.create<IndentOptions, never>({
         () =>
         ({ tr, state, dispatch, editor }: CommandProps) => {
           const { selection } = state;
+          const startOfLine = selection.$anchor.parentOffset === 0;
           tr = tr.setSelection(selection);
-          tr = updateIndentLevel(
-            tr,
-            this.options,
-            editor.extensionManager.extensions,
-            "indent"
-          );
+          if (startOfLine) {
+            tr = updateIndentLevel(
+              tr,
+              this.options,
+              editor.extensionManager.extensions,
+              "indent"
+            );
+          } else {
+            const fourSpaces = "    ";
+            tr = tr.insertText(fourSpaces, selection.from, selection.to);
+          }
           if (tr.docChanged && dispatch) {
             dispatch(tr);
             return true;

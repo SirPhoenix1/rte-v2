@@ -8,8 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { Font, fontList } from "@/app/fonts";
-import { cn } from "@/lib/utils";
-import { DEFAULT_FONT_FAMILY } from "@/components/plugins/font_family_plugin";
+import { DEFAULT_FONT_FAMILY } from "@/plugins/font_family_plugin";
 
 interface FontFamilyButtonProps {
   editor: Editor;
@@ -39,7 +38,7 @@ const FontFamilyButton = ({ editor }: FontFamilyButtonProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className={`p-2 no-outline font-family-btn ${fontFamily.className}`}
+          className={`toolBtn font-family-btn ${fontFamily.className}`}
           variant="ghost"
           data-tooltip-id="fontFamilyTooltip"
           data-tooltip-content="Font Family"

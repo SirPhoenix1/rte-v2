@@ -15,6 +15,7 @@ const QuoteButton = ({ editor }: QuoteButtonProps) => {
       data-tooltip-id="quoteTooltip"
       data-tooltip-content="Quote Block"
       data-tooltip-place="bottom"
+      className="toolBtn"
     >
       <Quote className="h-4 w-4" />
     </Toggle>

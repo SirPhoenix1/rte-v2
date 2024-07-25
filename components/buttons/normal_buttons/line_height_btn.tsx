@@ -7,9 +7,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { BetweenHorizontalStart } from "lucide-react";
-import { line_heights } from "@/components/plugins/line_height_plugin";
+import { line_heights } from "@/plugins/line_height_plugin";
 import { useEffect, useState } from "react";
-import { DEFAULT_HEIGHT } from "@/components/plugins/line_height_plugin";
+import { DEFAULT_HEIGHT } from "@/plugins/line_height_plugin";
 
 interface LineHeightButtonProps {
   editor: Editor;
@@ -29,7 +29,7 @@ const LineHeightButton = ({ editor }: LineHeightButtonProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="p-2"
+          className="toolBtn"
           variant="ghost"
           data-tooltip-id="lineHeightTooltip"
           data-tooltip-content="Line Spacing"

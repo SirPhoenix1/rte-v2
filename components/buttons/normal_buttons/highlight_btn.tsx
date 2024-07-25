@@ -1,7 +1,7 @@
 import type { Editor } from "@tiptap/react";
 import { Highlighter } from "lucide-react";
-import { useEffect, useState } from "react";
-import { ColorResult, TwitterPicker } from "react-color";
+import { useState } from "react";
+import { ColorResult } from "react-color";
 import {
   Popover,
   PopoverContent,
@@ -14,7 +14,6 @@ import {
   MAX_COLORS,
   Color,
 } from "@/components/global/coloring";
-import { Theme } from "@/components/global/themes";
 import { useTheme } from "next-themes";
 
 interface HighlightButtonProps {
@@ -25,7 +24,7 @@ const HighlightButton = ({ editor }: HighlightButtonProps) => {
   const [color, setColor] = useState<string>(Color.YELLOW);
   const [colorList, setList] = useState<string[]>(stableColorList);
   const [customColors, setCustomColors] = useState<string[]>([]);
-  const [themeColor, setThemeColor] = useState<string>(Color.BLACK);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const { theme } = useTheme();
 
   const applyColor = (selectedColor: ColorResult) => {
@@ -49,30 +48,30 @@ const HighlightButton = ({ editor }: HighlightButtonProps) => {
     editor.chain().focus().unsetHighlight().run();
   };
 
-  useEffect(() => {
-    if (theme === Theme.DARK) {
-      setThemeColor(Color.WHITE);
-    } else {
-      setThemeColor(Color.BLACK);
-    }
-  }, [theme]);
+  const toggleShowModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const handleClick = (e: any) => {
+    if (!showModal) e.stopPropagation();
+  };
 
   return (
-    <Popover>
+    <Popover modal open={showModal} onOpenChange={toggleShowModal}>
       <PopoverTrigger asChild>
         <Button
-          className="p-2"
+          className="toolBtn"
           variant="ghost"
           data-tooltip-id="highlightTooltip"
           data-tooltip-content="Highlight (Ctrl+Shift+H)"
           data-tooltip-place="bottom"
+          onClick={handleClick}
         >
           <div className="flex items-center">
             <span
               className={"text-base border-b-2 pb-0 leading-none"}
               style={{
                 borderBottom: `2px solid ${color}`,
-                color: `${themeColor}`,
               }}
             >
               <Highlighter className="h-4 w-4" />

@@ -35,7 +35,7 @@ const ImageButton = ({ editor }: ImageButtonProps) => {
       {/** The toolbar button of the Image Button. */}
       <DropdownMenuTrigger asChild>
         <Button
-          className="p-2 no-outline"
+          className="toolBtn"
           variant="ghost"
           data-tooltip-id="imageTooltip"
           data-tooltip-content="Insert Image"

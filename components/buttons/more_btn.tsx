@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { MoreHorizontal } from "lucide-react";
-import React, { useState } from "react";
+import React from "react";
 
 interface MoreButtonProps {
   buttons: React.ReactNode[];
@@ -18,7 +18,7 @@ const MoreButton = ({ buttons }: MoreButtonProps) => {
       {buttons.length > 0 && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="p-2 no-outline" variant="ghost">
+            <Button className="toolBtn" variant="ghost">
               <MoreHorizontal />
             </Button>
           </DropdownMenuTrigger>

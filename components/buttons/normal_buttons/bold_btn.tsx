@@ -10,6 +10,7 @@ const BoldButton = ({ editor }: BoldButtonProps) => {
   return (
     <Toggle
       size="sm"
+      className="toolBtn"
       pressed={editor.isActive("bold")}
       onPressedChange={() => editor.chain().focus().toggleBold().run()}
       data-tooltip-id="boldTooltip"
