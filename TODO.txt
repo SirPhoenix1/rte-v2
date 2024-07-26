@@ -1,1 +1,10 @@
-ai functionality
+add a limit to ai content.
+move request handling to route.ts
+for all actions, handle no context cases.
+make it s the ai class isn't used in the button component
+add Spelling & Grammar
+add Extend
+add Shorten
+add Simplify
+add Summarize
+add Continue
