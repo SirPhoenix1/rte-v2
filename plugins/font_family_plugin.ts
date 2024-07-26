@@ -1,6 +1,6 @@
 import FontFamily from "@tiptap/extension-font-family";
 
-import { fontList } from "@/app/fonts";
+import { fontList } from "@/lib/fonts";
 
 export const DEFAULT_FONT_FAMILY = fontList[0];
 

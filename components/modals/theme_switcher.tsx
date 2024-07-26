@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { themes } from "@/components/global/themes";
+import { themes } from "@/lib/themes";
 
 const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);

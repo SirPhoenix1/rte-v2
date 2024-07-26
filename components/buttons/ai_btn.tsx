@@ -6,8 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Tooltip } from "react-tooltip";
-import { poppins } from "@/app/fonts";
+import AI from "@/components/global/ai";
 
 interface AIButtonProps {
   editor: Editor;
@@ -69,6 +68,8 @@ const icon = (
 );
 
 const AIButton = ({ editor }: AIButtonProps) => {
+  const ai = new AI(editor);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -83,38 +84,26 @@ const AIButton = ({ editor }: AIButtonProps) => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem
-          data-tooltip-id="ai1Tooltip"
-          data-tooltip-content="A1"
-          data-tooltip-place="right"
-        >
-          Assist 1
+        <DropdownMenuItem onClick={() => ai.test()}>Test</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => ai.tone()}>
+          Adjust Tone
         </DropdownMenuItem>
-        <Tooltip id="ai1Tooltip" />
-        <DropdownMenuItem
-          data-tooltip-id="ai2Tooltip"
-          data-tooltip-content="A2"
-          data-tooltip-place="right"
-        >
-          Assist 2
+        <DropdownMenuItem onClick={() => ai.grammar()}>
+          Spelling & Grammar
         </DropdownMenuItem>
-        <Tooltip id="ai2Tooltip" />
-        <DropdownMenuItem
-          data-tooltip-id="ai3Tooltip"
-          data-tooltip-content="A3"
-          data-tooltip-place="right"
-        >
-          Assist 3
+        <DropdownMenuItem onClick={() => ai.extend()}>Extend</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => ai.shorten()}>
+          Shorten
         </DropdownMenuItem>
-        <Tooltip id="ai4Tooltip" />
-        <DropdownMenuItem
-          data-tooltip-id="ai4Tooltip"
-          data-tooltip-content="A4"
-          data-tooltip-place="right"
-        >
-          Assist 4
+        <DropdownMenuItem onClick={() => ai.simplify()}>
+          Simplify
         </DropdownMenuItem>
-        <Tooltip id="ai4Tooltip" />
+        <DropdownMenuItem onClick={() => ai.summarize()}>
+          Summarize
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => ai.complete()}>
+          Complete Text
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

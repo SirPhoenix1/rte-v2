@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { Font, fontList } from "@/app/fonts";
+import { Font, fontList } from "@/lib/fonts";
 import { DEFAULT_FONT_FAMILY } from "@/plugins/font_family_plugin";
 
 interface FontFamilyButtonProps {
