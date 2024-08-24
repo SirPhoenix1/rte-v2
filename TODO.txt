@@ -1,1 +1,4 @@
-ai functionality
+server
+prompt engineering
+integration, tying with db
+ai general assistant

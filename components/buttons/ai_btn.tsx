@@ -7,7 +7,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Tooltip } from "react-tooltip";
-import { poppins } from "@/app/fonts";
+import { useAI } from "@/hooks/use-ai";
+import { Tones } from "@/lib/ai-utils";
 
 interface AIButtonProps {
   editor: Editor;
@@ -69,6 +70,7 @@ const icon = (
 );
 
 const AIButton = ({ editor }: AIButtonProps) => {
+  const ai = useAI({ editor });
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -84,37 +86,68 @@ const AIButton = ({ editor }: AIButtonProps) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem
-          data-tooltip-id="ai1Tooltip"
-          data-tooltip-content="A1"
+          onClick={() => ai.generateTone(Tones.HUMOROUS)}
+          data-tooltip-id="ai-tone-tooltip"
+          data-tooltip-content="Adjust Tone"
           data-tooltip-place="right"
         >
-          Assist 1
+          Adjust Tone
         </DropdownMenuItem>
-        <Tooltip id="ai1Tooltip" />
+        <Tooltip id="ai-tone-tooltip" />
         <DropdownMenuItem
-          data-tooltip-id="ai2Tooltip"
-          data-tooltip-content="A2"
+          onClick={() => ai.generateGrammar()}
+          data-tooltip-id="ai-grammar-tooltip"
+          data-tooltip-content="Fix Spelling & Grammar"
           data-tooltip-place="right"
         >
-          Assist 2
+          Fix Spelling & Grammar
         </DropdownMenuItem>
-        <Tooltip id="ai2Tooltip" />
+        <Tooltip id="ai-grammar-tooltip" />
         <DropdownMenuItem
-          data-tooltip-id="ai3Tooltip"
-          data-tooltip-content="A3"
+          onClick={() => ai.generateExtend()}
+          data-tooltip-id="ai-extend-tooltip"
+          data-tooltip-content="Extend Text"
           data-tooltip-place="right"
         >
-          Assist 3
+          Extend Text
         </DropdownMenuItem>
-        <Tooltip id="ai4Tooltip" />
+        <Tooltip id="ai-extend-tooltip" />
         <DropdownMenuItem
-          data-tooltip-id="ai4Tooltip"
-          data-tooltip-content="A4"
+          onClick={() => ai.generateReduce()}
+          data-tooltip-id="ai-reduce-tooltip"
+          data-tooltip-content="Reduce Text"
           data-tooltip-place="right"
         >
-          Assist 4
+          Reduce Text
         </DropdownMenuItem>
-        <Tooltip id="ai4Tooltip" />
+        <Tooltip id="ai-reduce-tooltip" />
+        <DropdownMenuItem
+          onClick={() => ai.generateContinue()}
+          data-tooltip-id="ai-continue-tooltip"
+          data-tooltip-content="Continue"
+          data-tooltip-place="right"
+        >
+          Continue
+        </DropdownMenuItem>
+        <Tooltip id="ai-continue-tooltip" />
+        <DropdownMenuItem
+          onClick={() => ai.generateSummarize()}
+          data-tooltip-id="ai-summarize-tooltip"
+          data-tooltip-content="Summarize"
+          data-tooltip-place="right"
+        >
+          Summarize
+        </DropdownMenuItem>
+        <Tooltip id="ai-summarize-tooltip" />
+        <DropdownMenuItem
+          onClick={() => ai.generateReview()}
+          data-tooltip-id="ai-review-tooltip"
+          data-tooltip-content="Review"
+          data-tooltip-place="right"
+        >
+          Review
+        </DropdownMenuItem>
+        <Tooltip id="ai-review-tooltip" />
       </DropdownMenuContent>
     </DropdownMenu>
   );
