@@ -2,3 +2,7 @@ server
 prompt engineering
 integration, tying with db
 ai general assistant
+for all actions, handle no context cases.
+fix tone
+prompt engineer all actions.
+consider fine-tune.
