@@ -5,7 +5,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Settings as SettingsIcon } from "lucide-react";
-import ThemeSwitcher from "@/components/modals/theme_switcher";
+import ThemeSwitcher from "@/components/modals/theme-switcher";
 
 const Settings = () => {
   return (

@@ -5,10 +5,11 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
+  DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import ImageLinkItem from "@/components/modals/image_link_item";
-import { SingleImageDropzone } from "@/components/modals/image_file_item";
-import CameraItem from "@/components/modals/image_camera_item";
+import ImageLinkItem from "@/components/modals/image-link-modal";
+import { SingleImageDropzone } from "@/components/modals/image-file-modal";
+import CameraItem from "@/components/modals/image-camera-modal";
 
 interface ImageButtonProps {
   editor: Editor;
@@ -47,11 +48,26 @@ const ImageButton = ({ editor }: ImageButtonProps) => {
       {/** Uploading an image from the computer's file explorer. */}
       <DropdownMenuContent>
         {/** Uploading an image from PC's file explorer. */}
-        <SingleImageDropzone onChange={handleFile} />
+        <DropdownMenuItem
+          className="text-xs"
+          onClick={(e) => e.preventDefault()}
+        >
+          <SingleImageDropzone onChange={handleFile} />
+        </DropdownMenuItem>
         {/** Uploading an image from a link. */}
-        <ImageLinkItem editor={editor} />
+        <DropdownMenuItem
+          className="text-xs"
+          onClick={(e) => e.preventDefault()}
+        >
+          <ImageLinkItem editor={editor} />
+        </DropdownMenuItem>
         {/** Uploading an image from the computer's camera. */}
-        <CameraItem editor={editor} />
+        <DropdownMenuItem
+          className="text-xs"
+          onClick={(e) => e.preventDefault()}
+        >
+          <CameraItem editor={editor} />
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

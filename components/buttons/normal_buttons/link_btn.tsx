@@ -1,6 +1,6 @@
 import type { Editor } from "@tiptap/react";
 import { ChangeEvent, useEffect, useState } from "react";
-import LinkPopover from "@/components/modals/text_link_popover";
+import LinkPopover from "@/components/modals/text-link-modal";
 
 interface LinkButtonProps {
   editor: Editor;

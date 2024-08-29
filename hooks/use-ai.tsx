@@ -6,72 +6,56 @@ import {
   system_prompt_review,
   system_prompt_summarize,
   Tone,
-  tone_to_prompt,
-} from "@/lib/ai-utils";
-import { Editor } from "@tiptap/react";
+  getToneDescription,
+} from "@/lib/ai/ai-utils";
+import { useCompletion } from "ai/react";
 
 interface AIProps {
-  editor: Editor;
+  api: string;
 }
 
-export const useAI = ({ editor }: AIProps) => {
-  const getContext = () => {
-    const { view, state } = editor;
-    const { from, to } = view.state.selection;
-    const context = state.doc.textBetween(from, to);
-    return context;
+export const useAI = ({ api }: AIProps) => {
+  const { completion, complete } = useCompletion({
+    api,
+  });
+
+  const generateTone = async (tone: Tone, context: string) => {
+    const prompt = getToneDescription(tone);
+    await complete(prompt + context);
   };
 
-  const generateTone = (tone: Tone) => {
-    const context = getContext();
-    const prompt = tone_to_prompt[tone];
-    //reply = await REQ(prompt, context)
-    //return reply.text
-  };
-
-  const generateGrammar = () => {
-    const context = getContext();
+  const generateGrammar = async (context: string) => {
     const prompt = system_prompt_grammar;
-    //reply = await REQ(prompt, context)
-    //return reply.text
+    await complete(prompt + context);
   };
 
-  const generateExtend = () => {
-    const context = getContext();
+  const generateExtend = async (context: string) => {
     const prompt = system_prompt_extend;
-    //reply = await REQ(prompt, context)
-    //return reply.text
+    await complete(prompt + context);
   };
 
-  const generateReduce = () => {
-    const context = getContext();
+  const generateReduce = async (context: string) => {
     const prompt = system_prompt_reduce;
-    //reply = await REQ(prompt, context)
-    //return reply.text
+    await complete(prompt + context);
   };
 
-  const generateContinue = () => {
-    const context = getContext();
+  const generateContinue = async (context: string) => {
     const prompt = system_prompt_continue;
-    //reply = await REQ(prompt, context)
-    //return reply.text
+    await complete(prompt + context);
   };
 
-  const generateSummarize = () => {
-    const context = getContext();
+  const generateSummarize = async (context: string) => {
     const prompt = system_prompt_summarize;
-    //reply = await REQ(prompt, context)
-    //return reply.text
+    await complete(prompt + context);
   };
 
-  const generateReview = () => {
-    const context = getContext();
+  const generateReview = async (context: string) => {
     const prompt = system_prompt_review;
-    //reply = await REQ(prompt, context)
-    //return reply.text
+    await complete(prompt + context);
   };
 
   return {
+    completion,
     generateContinue,
     generateExtend,
     generateGrammar,
@@ -80,4 +64,15 @@ export const useAI = ({ editor }: AIProps) => {
     generateTone,
     generateReview,
   };
+};
+
+export type AI = {
+  completion: string;
+  generateContinue: (context: string) => void;
+  generateExtend: (context: string) => void;
+  generateGrammar: (context: string) => void;
+  generateReduce: (context: string) => void;
+  generateSummarize: (context: string) => void;
+  generateTone: (tone: Tone, context: string) => void;
+  generateReview: (context: string) => void;
 };

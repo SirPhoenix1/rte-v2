@@ -8,7 +8,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Tooltip } from "react-tooltip";
 import { useAI } from "@/hooks/use-ai";
-import { Tones } from "@/lib/ai-utils";
+import { useEffect, useState } from "react";
+import { Tone } from "@/lib/ai/ai-utils";
 
 interface AIButtonProps {
   editor: Editor;
@@ -69,8 +70,29 @@ const icon = (
   </svg>
 );
 
+const API_PATH = "/api/ai/completion";
+
 const AIButton = ({ editor }: AIButtonProps) => {
-  const ai = useAI({ editor });
+  // The pointer of which part of the ai answer should be printed now.
+  const [ansBuffer, setAnsBuffer] = useState(0);
+
+  // The hook that serves the ai functions and interacts with the ai api.
+  const ai = useAI({ api: API_PATH });
+
+  // Get the correct user selection in the editor as the context for the ai request.
+  const getContext = () => {
+    const { from, to } = editor.view.state.selection;
+    const selection = editor.state.doc.textBetween(from, to, " ");
+    return selection;
+  };
+
+  // Print the stream of words onto the editor.
+  // Each time completion is updated, the buffer points to where in the completion the printing left off.
+  useEffect(() => {
+    editor.commands.insertContent(ai.completion.slice(ansBuffer));
+    setAnsBuffer(ai.completion.length);
+  }, [ai.completion]);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -86,7 +108,7 @@ const AIButton = ({ editor }: AIButtonProps) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem
-          onClick={() => ai.generateTone(Tones.HUMOROUS)}
+          onClick={() => ai.generateTone(Tone.HUMOROUS, getContext())}
           data-tooltip-id="ai-tone-tooltip"
           data-tooltip-content="Adjust Tone"
           data-tooltip-place="right"
@@ -95,7 +117,7 @@ const AIButton = ({ editor }: AIButtonProps) => {
         </DropdownMenuItem>
         <Tooltip id="ai-tone-tooltip" />
         <DropdownMenuItem
-          onClick={() => ai.generateGrammar()}
+          onClick={() => ai.generateGrammar(getContext())}
           data-tooltip-id="ai-grammar-tooltip"
           data-tooltip-content="Fix Spelling & Grammar"
           data-tooltip-place="right"
@@ -104,7 +126,7 @@ const AIButton = ({ editor }: AIButtonProps) => {
         </DropdownMenuItem>
         <Tooltip id="ai-grammar-tooltip" />
         <DropdownMenuItem
-          onClick={() => ai.generateExtend()}
+          onClick={() => ai.generateExtend(getContext())}
           data-tooltip-id="ai-extend-tooltip"
           data-tooltip-content="Extend Text"
           data-tooltip-place="right"
@@ -113,7 +135,7 @@ const AIButton = ({ editor }: AIButtonProps) => {
         </DropdownMenuItem>
         <Tooltip id="ai-extend-tooltip" />
         <DropdownMenuItem
-          onClick={() => ai.generateReduce()}
+          onClick={() => ai.generateReduce(getContext())}
           data-tooltip-id="ai-reduce-tooltip"
           data-tooltip-content="Reduce Text"
           data-tooltip-place="right"
@@ -122,7 +144,7 @@ const AIButton = ({ editor }: AIButtonProps) => {
         </DropdownMenuItem>
         <Tooltip id="ai-reduce-tooltip" />
         <DropdownMenuItem
-          onClick={() => ai.generateContinue()}
+          onClick={() => ai.generateContinue(getContext())}
           data-tooltip-id="ai-continue-tooltip"
           data-tooltip-content="Continue"
           data-tooltip-place="right"
@@ -131,7 +153,7 @@ const AIButton = ({ editor }: AIButtonProps) => {
         </DropdownMenuItem>
         <Tooltip id="ai-continue-tooltip" />
         <DropdownMenuItem
-          onClick={() => ai.generateSummarize()}
+          onClick={() => ai.generateSummarize(getContext())}
           data-tooltip-id="ai-summarize-tooltip"
           data-tooltip-content="Summarize"
           data-tooltip-place="right"
@@ -140,7 +162,7 @@ const AIButton = ({ editor }: AIButtonProps) => {
         </DropdownMenuItem>
         <Tooltip id="ai-summarize-tooltip" />
         <DropdownMenuItem
-          onClick={() => ai.generateReview()}
+          onClick={() => ai.generateReview(getContext())}
           data-tooltip-id="ai-review-tooltip"
           data-tooltip-content="Review"
           data-tooltip-place="right"

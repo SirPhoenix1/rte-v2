@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Editor } from "@tiptap/react";
-import { DropdownMenuItem } from "../ui/dropdown-menu";
 
 interface ImageLinkItemProps {
   editor: Editor;
@@ -54,42 +53,40 @@ const ImageLinkItem = ({ editor }: ImageLinkItemProps) => {
     setURL(e.target.value);
   };
   return (
-    <DropdownMenuItem className="text-xs" onClick={(e) => e.preventDefault()}>
-      <Popover open={linkPopOpen} modal>
-        <PopoverTrigger asChild>
-          <button onClick={openLinkPop}>
-            <Link2 className="h-4 w-4 mr-2 inline" color="gray" />
-            Upload From URL
-          </button>
-        </PopoverTrigger>
-        <PopoverContent>
-          <div>
-            <h3>Enter URL</h3>
-            <Input
-              type="text"
-              placeholder="https://example.com"
-              value={url}
-              onChange={handleLinkChange}
-              className="no-outline my-3"
-            />
-            <div className="flex justify-between">
-              <Button
-                onClick={closeLinkPop}
-                className="text-sm px-2 py-1 h-8 w-20"
-              >
-                Cancel
-              </Button>
-              <Button
-                onClick={handleLinkSubmit}
-                className="text-sm px-2 py-1 h-8 w-20"
-              >
-                Enter
-              </Button>
-            </div>
+    <Popover open={linkPopOpen} modal>
+      <PopoverTrigger asChild>
+        <button onClick={openLinkPop}>
+          <Link2 className="h-4 w-4 mr-2 inline" color="gray" />
+          Upload From URL
+        </button>
+      </PopoverTrigger>
+      <PopoverContent>
+        <div>
+          <h3>Enter URL</h3>
+          <Input
+            type="text"
+            placeholder="https://example.com"
+            value={url}
+            onChange={handleLinkChange}
+            className="no-outline my-3"
+          />
+          <div className="flex justify-between">
+            <Button
+              onClick={closeLinkPop}
+              className="text-sm px-2 py-1 h-8 w-20"
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleLinkSubmit}
+              className="text-sm px-2 py-1 h-8 w-20"
+            >
+              Enter
+            </Button>
           </div>
-        </PopoverContent>
-      </Popover>
-    </DropdownMenuItem>
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 };
 export default ImageLinkItem;
