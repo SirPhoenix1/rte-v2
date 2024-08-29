@@ -1,3 +1,4 @@
+import { getTonePrompt, Tone } from "@/lib/ai/ai-utils";
 import {
   system_prompt_continue,
   system_prompt_extend,
@@ -5,9 +6,7 @@ import {
   system_prompt_reduce,
   system_prompt_review,
   system_prompt_summarize,
-  Tone,
-  getToneDescription,
-} from "@/lib/ai/ai-utils";
+} from "@/lib/ai/system-prompts";
 import { useCompletion } from "ai/react";
 
 interface AIProps {
@@ -20,38 +19,38 @@ export const useAI = ({ api }: AIProps) => {
   });
 
   const generateTone = async (tone: Tone, context: string) => {
-    const prompt = getToneDescription(tone);
-    await complete(prompt + context);
+    const prompt = getTonePrompt(tone);
+    await complete(prompt + " The text: " + context);
   };
 
   const generateGrammar = async (context: string) => {
     const prompt = system_prompt_grammar;
-    await complete(prompt + context);
+    await complete(prompt + " The text: " + context);
   };
 
   const generateExtend = async (context: string) => {
     const prompt = system_prompt_extend;
-    await complete(prompt + context);
+    await complete(prompt + " The text: " + context);
   };
 
   const generateReduce = async (context: string) => {
     const prompt = system_prompt_reduce;
-    await complete(prompt + context);
+    await complete(prompt + " The text: " + context);
   };
 
   const generateContinue = async (context: string) => {
     const prompt = system_prompt_continue;
-    await complete(prompt + context);
+    await complete(prompt + " The text: " + context);
   };
 
   const generateSummarize = async (context: string) => {
     const prompt = system_prompt_summarize;
-    await complete(prompt + context);
+    await complete(prompt + " The text: " + context);
   };
 
   const generateReview = async (context: string) => {
     const prompt = system_prompt_review;
-    await complete(prompt + context);
+    await complete(prompt + " The text: " + context);
   };
 
   return {
