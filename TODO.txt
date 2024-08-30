@@ -1,4 +1,3 @@
-Fix custom prompt modal
 integration, tying with db
 ai general assistant
 prompt engineer all actions

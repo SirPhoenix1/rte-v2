@@ -22,14 +22,10 @@ const CustomPromptModal = ({
 }: PromptModalProps) => {
   return (
     <Popover modal>
-      <PopoverTrigger
-        asChild
-        className="font-medium"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <span>Custom</span>
+      <PopoverTrigger asChild onClick={(e) => e.stopPropagation()}>
+        <button className="font-medium">Custom</button>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent onClick={(e) => e.stopPropagation()}>
         <div>
           <h3>Enter Prompt</h3>
           <Input
@@ -37,7 +33,7 @@ const CustomPromptModal = ({
             placeholder={placeholder}
             value={prompt}
             onChange={handleChange}
-            className="no-outline my-3"
+            className="my-3"
           />
           <div className="flex justify-between">
             <Button

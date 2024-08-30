@@ -23,19 +23,18 @@ const LinkPopover = ({
 }: LinkPopoverProps) => {
   return (
     <Popover modal>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild onClick={(e) => e.stopPropagation()}>
         <Button
           size="sm"
           variant="ghost"
           data-tooltip-id="linkTooltip"
           data-tooltip-content="Insert Link"
           data-tooltip-place="bottom"
-          onClick={(e) => e.stopPropagation()}
         >
           <Link2 className="h-4 w-4" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent onClick={(e) => e.stopPropagation()}>
         <div>
           <h3>Enter URL</h3>
           <Input
@@ -43,7 +42,7 @@ const LinkPopover = ({
             placeholder="https://example.com"
             value={url}
             onChange={handleChange}
-            className="no-outline my-3"
+            className="my-3"
           />
           <div className="flex justify-between">
             <Button
