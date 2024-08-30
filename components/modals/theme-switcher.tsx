@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { themes } from "@/lib/themes";
+import { Theme } from "@/lib/themes";
 
 const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);
@@ -21,12 +21,12 @@ const ThemeSwitcher = () => {
         <span>Background Color</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="mr-40">
-        {themes.map((t) => (
+        {Object.values(Theme).map((theme) => (
           <DropdownMenuItem
-            key={t.name}
-            onClick={() => setTheme(t.name.toLowerCase())}
+            key={theme}
+            onClick={() => setTheme(theme.toLowerCase())}
           >
-            {t.name}
+            {theme}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

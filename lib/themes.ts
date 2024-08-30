@@ -1,9 +1,5 @@
-const enum Theme {
-  LIGHT = "light",
-  DARK = "dark",
-  PARCHMENT = "parchment",
+export enum Theme {
+  LIGHT = "Light",
+  DARK = "Dark",
+  PARCHMENT = "Parchment",
 }
-
-const themes = [{ name: "Light" }, { name: "Dark" }, { name: "Parchment" }];
-
-export { Theme, themes };

@@ -1,8 +1,4 @@
-server
-prompt engineering
+Fix custom prompt modal
 integration, tying with db
 ai general assistant
-for all actions, handle no context cases.
-fix tone
-prompt engineer all actions.
-consider fine-tune.
+prompt engineer all actions

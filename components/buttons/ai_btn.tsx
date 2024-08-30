@@ -8,8 +8,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Tooltip } from "react-tooltip";
 import { useAI } from "@/hooks/use-ai";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Tone } from "@/lib/ai/ai-utils";
+import CustomPromptModal from "@/components/modals/custom-prompt-modal";
 
 interface AIButtonProps {
   editor: Editor;
@@ -70,14 +71,9 @@ const icon = (
   </svg>
 );
 
-const API_PATH = "/api/ai/completion";
-
 const AIButton = ({ editor }: AIButtonProps) => {
-  // The pointer of which part of the ai answer should be printed now.
-  const [ansBuffer, setAnsBuffer] = useState(0);
-
   // The hook that serves the ai functions and interacts with the ai api.
-  const ai = useAI({ api: API_PATH });
+  const ai = useAI();
 
   // Get the correct user selection in the editor as the context for the ai request.
   const getContext = () => {
@@ -88,10 +84,25 @@ const AIButton = ({ editor }: AIButtonProps) => {
 
   // Print the stream of words onto the editor.
   // Each time completion is updated, the buffer points to where in the completion the printing left off.
+
+  const [resBuffer, setResBuffer] = useState(0);
   useEffect(() => {
-    editor.commands.insertContent(ai.completion.slice(ansBuffer));
-    setAnsBuffer(ai.completion.length);
-  }, [ai.completion]);
+    const newContent = ai.response;
+    editor.commands.insertContent(newContent.substring(resBuffer));
+    setResBuffer(newContent.length);
+  }, [ai.response]);
+
+  // Custom Prompt Button Functions
+  const [customPrompt, setCustomPrompt] = useState<string>("");
+
+  const handleCustomChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setCustomPrompt(e.target.value);
+  };
+
+  const handleCustomSubmit = () => {
+    if (customPrompt.trim().length === 0) return;
+    ai.generateCustom(customPrompt, getContext());
+  };
 
   return (
     <DropdownMenu>
@@ -108,12 +119,25 @@ const AIButton = ({ editor }: AIButtonProps) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem
-          onClick={() => ai.generateTone(Tone.HUMOROUS, getContext())}
           data-tooltip-id="ai-tone-tooltip"
           data-tooltip-content="Adjust Tone"
           data-tooltip-place="right"
         >
-          Adjust Tone
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild className="font-medium">
+              <span>Set Tone</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="mr-40">
+              {Object.values(Tone).map((tone) => (
+                <DropdownMenuItem
+                  key={tone}
+                  onClick={() => ai.generateTone(tone, getContext())}
+                >
+                  {tone}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </DropdownMenuItem>
         <Tooltip id="ai-tone-tooltip" />
         <DropdownMenuItem
@@ -170,6 +194,18 @@ const AIButton = ({ editor }: AIButtonProps) => {
           Review
         </DropdownMenuItem>
         <Tooltip id="ai-review-tooltip" />
+        <DropdownMenuItem
+          data-tooltip-id="ai-custom-tooltip"
+          data-tooltip-content="Write your own request"
+          data-tooltip-place="right"
+        >
+          <CustomPromptModal
+            prompt={customPrompt}
+            handleChange={handleCustomChange}
+            handleSubmit={handleCustomSubmit}
+          />
+        </DropdownMenuItem>
+        <Tooltip id="ai-custom-tooltip" />
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -7,8 +7,23 @@ import { DEFAULT_FONT_FAMILY } from "@/plugins/font_family_plugin";
 import { DEFAULT_FONT_SIZE } from "@/plugins/font_size_plugin";
 import "@/styles/editor.css";
 import WordCounter from "./word_counter";
+import { Alignment } from "@/lib/utils";
 
-const Editor = () => {
+interface EditorProps {
+  content?: string;
+  alignment?: Alignment;
+  fontFamily?: string;
+  fontSize?: string;
+  placeholder?: string;
+}
+
+const Editor = ({
+  content = "",
+  alignment = Alignment.LEFT,
+  fontFamily = DEFAULT_FONT_FAMILY.className,
+  fontSize = DEFAULT_FONT_SIZE + "pt",
+  placeholder = "Write here...",
+}: EditorProps) => {
   const editor = useEditor({
     editorProps: {
       attributes: {
@@ -16,7 +31,7 @@ const Editor = () => {
           "min-h-[70vh] max-w-[100%] sm:text-sm md:text-base lg:text-lg focus:outline-none rounded-md rounded-tr-none rounded-tl-none border border-input border-t-0 bg-transparent px-6 py-4 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 overflow-auto",
       },
     },
-    content: "",
+    content: content,
     editable: true,
     immediatelyRender: false,
     extensions: [
@@ -72,12 +87,17 @@ const Editor = () => {
         nested: true,
       }),
       ext.Placeholder.configure({
-        placeholder: "Write here...",
+        placeholder: placeholder,
       }),
       ext.TextAlign.configure({
         types: ["heading", "paragraph"],
-        alignments: ["left", "right", "center", "justify"],
-        defaultAlignment: "left",
+        alignments: [
+          Alignment.LEFT,
+          Alignment.RIGHT,
+          Alignment.CENTER,
+          Alignment.JUSTIFY,
+        ],
+        defaultAlignment: alignment,
       }),
       ext.Image.configure({
         inline: true,
@@ -89,8 +109,8 @@ const Editor = () => {
     editor
       ?.chain()
       .focus()
-      .setFontFamily(DEFAULT_FONT_FAMILY.className)
-      .setFontSize(DEFAULT_FONT_SIZE + "pt")
+      .setFontFamily(fontFamily)
+      .setFontSize(fontSize)
       .run();
   }, [editor]);
 
